@@ -34,3 +34,5 @@
 !/app/assets/builds/.keep
 /data/*
 /data
+/.vscode
+/.vscode/*
