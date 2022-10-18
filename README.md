@@ -1,10 +1,18 @@
-# Outerspace Blockchain
+# <img src="https://outerspace-coding.herokuapp.com/assets/pq-70825bc795d25668cf4f11b06b990ed0d1c2cae887acce0625e5059226a7946a.png" width="25" height="25"> Outerspace Blockchain
+<!-- Outerspace Logo -->
 
-A Ruby implementation of the Outerspace blockchain.
-Developed using TDD (Test Driven Development).
-Chrome Selenium tests are used to test the blockchain in a browser and its interaction with the blockchain.
-Chrome Selenium are included in the docker compose without any additional setup.
-Simplecov is used to test code coverage.
+
+### A Ruby implementation of the Outerspace blockchain.
+#### Developed using TDD (Test Driven Development).
+#### Chrome Selenium tests are used to test the blockchain in a browser and its interaction with the blockchain.
+#### Chrome Selenium are included in the docker compose without any additional setup.
+#### Simplecov is used to test code coverage.
+
+## System dependencies
+    1. Docker
+    2. Postgresql
+    3. Ruby
+    4. Redis
 
 * Ruby 3.0.3
 * Compose Version 3.3
@@ -23,13 +31,6 @@ Simplecov is used to test code coverage.
 * `rvm gemset use outerspace`
 * `gem install bundler`
 * `bundle install`
-
-## System dependencies
-    1. Docker
-    2. Postgresql
-    3. Ruby
-    4. Redis
-
 ## Configuration
 ### Rake tasks
 
