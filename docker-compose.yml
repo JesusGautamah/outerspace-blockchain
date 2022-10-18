@@ -1,0 +1,51 @@
+version: "3.3"
+services:
+  redis:
+    image: redis:6.0.9-alpine
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data:/data
+    command: redis-server --appendonly yes
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: secret
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
+    volumes:
+      - .:/myapp
+    ports:
+      - "80:80"
+    depends_on:
+      - redis
+      - db
+      - sidekiq
+      - chrome
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/myapp
+    depends_on:
+      - redis
+      - db
+    environment:
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgres://postgres:secret@db:5432
+  chrome:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"
+    depends_on:
+      - sidekiq
+    volumes:
+      - /dev/shm:/dev/shm
+volumes:
+  redis:
+  postgres:
