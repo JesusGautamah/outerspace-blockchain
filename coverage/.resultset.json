@@ -24,31 +24,73 @@
           null
         ]
       },
-      "/myapp/app/controllers/application_controller.rb": {
+      "/myapp/lib/osbc/osbc.rb": {
         "lines": [
           null,
           null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/myapp/lib/outerspace/blockchain.rb": {
+        "lines": [
+          null,
+          null,
+          1,
           null,
           1,
           1,
-          null,
-          null,
-          null,
-          null,
+          1,
           null,
           null,
           null
         ]
       },
-      "/myapp/app/mailers/application_mailer.rb": {
+      "/myapp/lib/outerspace/blockchain/version.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
+          null,
           null
         ]
+      },
+      "/myapp/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myapp/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1666099892
+    "timestamp": 1666136361
   }
 }
