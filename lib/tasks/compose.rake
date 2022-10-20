@@ -4,13 +4,27 @@ require "rake"
 
 namespace :compose do
   task :install do
-    puts "Installing Compose..."
+    puts "Installing Blockchain and Database Containers"
     puts `sudo docker compose build`
     puts `sudo docker compose run web rails db:create`
     puts `sudo docker compose run web rails db:migrate`
     puts `sudo docker compose run web rails db:seed`
     puts `sudo docker compose down`
-    puts "Installing Compose... Done!"
+    puts "Installing Blockchain and Database Containers... Done!"
+    puts "This already setup your database with some initial values"
+    puts "Start the containers with command: rake compose:up"
+    puts "Stop the containers with command: rake compose:down"
+    puts "See the development and test log files in Rails default logs folder when using compose:up"
+    puts "-----------------------------------------------------------------------------------"
+    puts "Access the web server on port 80."
+    puts "hhtp://localhost"
+    puts "Look at README.md for more details."
+  end
+
+  task :build do
+    puts "Building Compose..."
+    puts `sudo docker compose build`
+    puts "Building Compose... Done!"
   end
 
   task :up do
