@@ -14,10 +14,15 @@ namespace :compose do
     puts "This already setup your database with some initial values"
     puts "Start the containers with command: rake compose:up"
     puts "Stop the containers with command: rake compose:down"
+    puts "Restart the containers with command: rake compose:restart"
+    puts "Clean up the containers with command: rake compose:clean_ports"
+    puts "Test your containers with command: rake compose:test"
+    puts "Build the containers againg with command: rake compose:build"
+    puts "rake compose_db command documentation at README.md to see database commands usage examples"
     puts "See the development and test log files in Rails default logs folder when using compose:up"
     puts "-----------------------------------------------------------------------------------"
     puts "Access the web server on port 80."
-    puts "hhtp://localhost"
+    puts "http://localhost"
     puts "Look at README.md for more details."
   end
 
