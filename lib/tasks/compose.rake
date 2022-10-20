@@ -13,16 +13,6 @@ namespace :compose do
     puts "Installing Compose... Done!"
   end
 
-  task :reset do
-    puts "Resetting Compose..."
-    puts `sudo docker compose run web rails db:drop`
-    puts `sudo docker compose run web rails db:create`
-    puts `sudo docker compose run web rails db:migrate`
-    puts `sudo docker compose run web rails db:seed`
-    puts `sudo docker compose build`
-    puts "Resetting Compose... Done!"
-  end
-
   task :up do
     puts "Running Compose..."
     puts `sudo docker compose up -d --remove-orphans`
@@ -35,16 +25,22 @@ namespace :compose do
     puts "Stopping Compose... Done!"
   end
 
-  task :migration do
-    puts "Running Migration..."
-    puts `sudo docker compose run web rails db:migrate`
-    puts "Running Migration... Done!"
+  task :db_detach do
+    puts "Running Database Detached..."
+    puts `sudo docker compose up -d db`
+    puts "Running Database Detached... Done!"
   end
 
-  task :seed do
-    puts "Running Seed..."
-    puts `sudo docker compose run web rails db:seed`
-    puts "Running Seed... Done!"
+  task :redis_detach do
+    puts "Running Redis Detached..."
+    puts `sudo docker compose up -d redis`
+    puts "Running Redis Detached... Done!"
+  end
+
+  task :back_detach do
+    puts "Running Backend Detached..."
+    puts `sudo docker compose up -d --remove-orphans db redis sidekiq`
+    puts "Running Backend Detached... Done!"
   end
 
   task :test do
@@ -58,5 +54,13 @@ namespace :compose do
     puts `sudo docker compose down`
     puts `sudo docker compose up -d --remove-orphans`
     puts "Restarting Compose... Done!"
+  end
+
+  task :clean_ports do
+    puts "Cleaning Ports..."
+    puts `sudo docker compose down`
+    puts `sudo docker compose rm -v`
+    puts `sudo docker rm -f $(sudo docker ps -a -q)`
+    puts "Cleaning Ports... Done!"
   end
 end

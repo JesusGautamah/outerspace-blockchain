@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @chain
+
+div
+  => link_to "Edit this chain", edit_chain_path(@chain)
+  '|
+  =< link_to "Back to chains", chains_path
+
+  = button_to "Destroy this chain", @chain, method: :delete

@@ -1,0 +1,30 @@
+= form_with(model: @chain) do |form|
+  - if @chain.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@chain.errors.count, "error")} prohibited this chain from being saved:"
+      ul
+        - @chain.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :name, style: "display: block"
+    = form.text_field :name
+
+  div
+    = form.label :blocks_count, style: "display: block"
+    = form.number_field :blocks_count
+
+  div
+    = form.label :maintainer, style: "display: block"
+    = form.text_field :maintainer
+
+  div
+    = form.label :chain_version, style: "display: block"
+    = form.text_field :chain_version
+
+  div
+    = form.label :description, style: "display: block"
+    = form.text_area :description
+
+  div
+    = form.submit
