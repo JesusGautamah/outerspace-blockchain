@@ -1,0 +1,10 @@
+h1 Editing wallet
+
+== render "form", wallet: @wallet
+
+br
+
+div
+  => link_to "Show this wallet", @wallet
+  '|
+  =< link_to "Back to wallets", wallets_path
