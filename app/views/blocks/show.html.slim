@@ -1,0 +1,8 @@
+p style="color: green" = notice
+
+== render @block
+
+div
+  = link_to "Back to blocks", blocks_path
+  br
+  = button_to "Destroy this block", @block, method: :delete

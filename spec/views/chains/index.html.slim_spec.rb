@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe "chains/index", type: :view do
   let(:chain_hash) do
     { 
-      name: Faker::Name.name, maintainer: Faker::Internet.email,
+      name: Faker::Name.name[0 .. 19], maintainer: Faker::Internet.email,
       chain_version: Faker::App.version, description: Faker::Lorem.paragraph
     }
   end
 
   let(:chain_hash_2) do
     {
-      name: Faker::Name.name, maintainer: Faker::Internet.email,
+      name: Faker::Name.name[0 .. 19], maintainer: Faker::Internet.email,
       chain_version: Faker::App.version, description: Faker::Lorem.paragraph
     }
   end
