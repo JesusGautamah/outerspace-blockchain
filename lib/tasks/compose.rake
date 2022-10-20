@@ -4,23 +4,32 @@ require "rake"
 
 namespace :compose do
   task :install do
-    puts "Installing Compose..."
+    puts "Installing Blockchain and Database Containers"
     puts `sudo docker compose build`
     puts `sudo docker compose run web rails db:create`
     puts `sudo docker compose run web rails db:migrate`
     puts `sudo docker compose run web rails db:seed`
     puts `sudo docker compose down`
-    puts "Installing Compose... Done!"
+    puts "Installing Blockchain and Database Containers... Done!"
+    puts "This already setup your database with some initial values"
+    puts "Start the containers with command: rake compose:up"
+    puts "Stop the containers with command: rake compose:down"
+    puts "Restart the containers with command: rake compose:restart"
+    puts "Clean up the containers with command: rake compose:clean_ports"
+    puts "Test your containers with command: rake compose:test"
+    puts "Build the containers againg with command: rake compose:build"
+    puts "rake compose_db command documentation at README.md to see database commands usage examples"
+    puts "See the development and test log files in Rails default logs folder when using compose:up"
+    puts "-----------------------------------------------------------------------------------"
+    puts "Access the web server on port 80."
+    puts "http://localhost"
+    puts "Look at README.md for more details."
   end
 
-  task :reset do
-    puts "Resetting Compose..."
-    puts `sudo docker compose run web rails db:drop`
-    puts `sudo docker compose run web rails db:create`
-    puts `sudo docker compose run web rails db:migrate`
-    puts `sudo docker compose run web rails db:seed`
+  task :build do
+    puts "Building Compose..."
     puts `sudo docker compose build`
-    puts "Resetting Compose... Done!"
+    puts "Building Compose... Done!"
   end
 
   task :up do
@@ -35,16 +44,22 @@ namespace :compose do
     puts "Stopping Compose... Done!"
   end
 
-  task :migration do
-    puts "Running Migration..."
-    puts `sudo docker compose run web rails db:migrate`
-    puts "Running Migration... Done!"
+  task :db_detach do
+    puts "Running Database Detached..."
+    puts `sudo docker compose up -d db`
+    puts "Running Database Detached... Done!"
   end
 
-  task :seed do
-    puts "Running Seed..."
-    puts `sudo docker compose run web rails db:seed`
-    puts "Running Seed... Done!"
+  task :redis_detach do
+    puts "Running Redis Detached..."
+    puts `sudo docker compose up -d redis`
+    puts "Running Redis Detached... Done!"
+  end
+
+  task :back_detach do
+    puts "Running Backend Detached..."
+    puts `sudo docker compose up -d --remove-orphans db redis sidekiq`
+    puts "Running Backend Detached... Done!"
   end
 
   task :test do
@@ -58,5 +73,13 @@ namespace :compose do
     puts `sudo docker compose down`
     puts `sudo docker compose up -d --remove-orphans`
     puts "Restarting Compose... Done!"
+  end
+
+  task :clean_ports do
+    puts "Cleaning Ports..."
+    puts `sudo docker compose down`
+    puts `sudo docker compose rm -v`
+    puts `sudo docker rm -f $(sudo docker ps -a -q)`
+    puts "Cleaning Ports... Done!"
   end
 end

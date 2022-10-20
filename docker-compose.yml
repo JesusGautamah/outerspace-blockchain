@@ -11,7 +11,7 @@ services:
   db:
     image: postgres
     ports: 
-      - "5324:5432"
+      - "5432:5432"
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
@@ -28,6 +28,8 @@ services:
       - db
       - sidekiq
       - chrome
+    env_file:
+      - .env
   sidekiq:
     build: .
     command: bundle exec sidekiq -C config/sidekiq.yml

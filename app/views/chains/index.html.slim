@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Chains
+
+#chains
+  - @chains.each do |chain|
+    == render chain
+    p
+      = link_to "Show this chain", chain
+
+= link_to "New chain", new_chain_path

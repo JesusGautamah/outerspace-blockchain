@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - main
+      - workflow_config
 
   pull_request:
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
-    container:
-      image: ruby:3.0.3
 
     strategy:
       matrix:
@@ -25,5 +24,21 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Run the default task
+    - name: Bundle Install to install Gems
       run: bundle install
+    - name: Update APT and install Docker Requirements
+      run: sudo apt update && sudo apt install ca-certificates curl gnupg2 lsb-release
+    - name: Create Keyrings Folder
+      run: mkdir -p /etc/apt/keyrings
+    - name: Create Docker Key
+      run: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    - name: Docker Repository setup
+      run: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    - name: Update APT Repository Sources and Install Docker Engine
+      run: sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin --yes
+    - name: Run rake compose:install to Install Blockchain Containers
+      run: bundle exec rake compose:install
+    - name: Run rake assets:precompile to precompile the frontend assets and prepare them for testing
+      run: bundle exec rake assets:precompile
+    - name: Run rake compose:test to Run Rspec Tests
+      run: bundle exec rake compose:test
