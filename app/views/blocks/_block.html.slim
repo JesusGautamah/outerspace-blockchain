@@ -1,0 +1,13 @@
+div id="#{dom_id block}"
+  p
+    strong Nonce:
+    =< block.nonce
+  p
+    strong Previous hash:
+    =< block.previous_hash
+  p
+    strong Block data:
+    =< block.block_data
+  p
+    strong Connections:
+    =< block.connections
