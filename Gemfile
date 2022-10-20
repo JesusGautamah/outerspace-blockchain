@@ -78,6 +78,8 @@ group :development, :test do
   gem "faker", "~> 2.23"
   # SimpleCov for testing
   gem "simplecov", "~> 0.21"
+  # Shoulda Matchers for testing
+  gem "shoulda-matchers", "~> 5.0"
 end
 
 group :development do

@@ -1,0 +1,10 @@
+h1 Editing block
+
+== render "form", block: @block
+
+br
+
+div
+  => link_to "Show this block", @block
+  '|
+  =< link_to "Back to blocks", blocks_path

@@ -24,6 +24,12 @@
           null
         ]
       },
+      "/myapp/app/helpers/blocks_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/myapp/app/helpers/chains_helper.rb": {
         "lines": [
           1,
@@ -56,6 +62,17 @@
           null
         ]
       },
+      "/myapp/app/models/block.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/myapp/app/models/chain.rb": {
         "lines": [
           1,
@@ -64,7 +81,7 @@
           1,
           1,
           null,
-          null,
+          1,
           null
         ]
       },
@@ -100,6 +117,28 @@
           null,
           null,
           1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/myapp/app/controllers/blocks_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
           1,
           1,
           null,
@@ -181,6 +220,6 @@
         ]
       }
     },
-    "timestamp": 1666259614
+    "timestamp": 1666270806
   }
 }
