@@ -1,0 +1,26 @@
+= form_with(model: @block) do |form|
+  - if @block.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@block.errors.count, "error")} prohibited this block from being saved:"
+      ul
+        - @block.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :nonce, style: "display: block"
+    = form.number_field :nonce
+
+  div
+    = form.label :previous_hash, style: "display: block"
+    = form.text_field :previous_hash
+
+  div
+    = form.label :block_data, style: "display: block"
+    = form.text_area :block_data
+
+  div
+    = form.label :connections, style: "display: block"
+    = form.text_field :connections
+
+  div
+    = form.submit
