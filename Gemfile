@@ -80,6 +80,8 @@ group :development, :test do
   gem "simplecov", "~> 0.21"
   # Shoulda Matchers for testing
   gem "shoulda-matchers", "~> 5.0"
+  # Database Cleaner for testing
+  gem "database_cleaner-active_record", "~> 2.0"
 end
 
 group :development do
