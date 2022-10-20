@@ -9,7 +9,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -40,35 +40,7 @@ jobs:
       run: sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin --yes
     - name: Run rake compose:install
       run: bundle exec rake compose:install
-    
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Bundle Install
-      run: bundle install
-    - name: Apt update
-      run: sudo apt update
-    - name: Install Docker Requirement
-      run: sudo apt install ca-certificates curl gnupg2 lsb-release
-    - name: Create Keyrings for Repositories Signatures Requirements
-      run: mkdir -p /etc/apt/keyrings
-    - name: Docker apt-gpg Requirements
-      run: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    - name: Docker Repository setup
-      run: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    - name: sudo apt update && install docker-engine docker-ce docker-ce-cli
-      run: sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin --yes
-    - name: Run rake compose:install
-      run: bundle exec rake compose:install
+    - name: Compile assets
+      run: bundle exec rake assets:precompile
     - name: Run rake compose:test
       run: bundle exec rake compose:test
-
-   
