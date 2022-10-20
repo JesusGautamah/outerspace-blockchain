@@ -37,13 +37,32 @@
 This application has rake tasks to help you with the development process with docker.
 The tasks are:
 
+#### Docker actions
 * `rake compose:install` - build docker compose and migrate the database
 * `rake compose:up` - start the docker compose services
 * `rake compose:down` - stop the docker compose services
-* `rake compose:migration` - run the migrations
 * `rake compose:restart` - restart the docker compose services
 * `rake compose:test` - run rspec tests with docker compose services
-* `rake compose:reset` - rebuild the docker compose and reset database
+* `rake compose:build` - build docker compose services
+* `rake compose:db_detach` - detach the database from the docker compose services
+* `rake compose:redis_detach` - detach the redis from the docker compose services
+* `rake compose:back_detach` - detach the backend(redis, sidekiq, db) from the docker compose services
+* `rake compose:clean_all` - clean all docker compose services
+
+
+
+#### Database actions
+* `rake compose_db:migrate` - migrate the database
+* `rake compose_db:reset` - reset the database
+* `rake compose_db:drop` - drop the database
+* `rake compose_db:create` - create the database
+* `rake compose_db:seed` - seed the database
+* `rake compose_db:rollback` - rollback the database
+* `rake compose_db:setup` - setup the database
+* `rake compose_db:reset_setup` - drop and setup the database
+* `rake compose_db:reset` - reset the database
+
+
 
 
 ### LOGS

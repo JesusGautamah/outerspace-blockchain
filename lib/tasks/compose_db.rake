@@ -9,6 +9,12 @@ namespace :compose_db do
     puts "Dropping Database... Done!"
   end
 
+  task :rollback do
+    puts "Rolling Back Database..."
+    puts `sudo docker compose run --rm web rails db:rollback`
+    puts "Rolling Back Database... Done!"
+  end
+
   task :complete_setup do
     puts "Setting up Database..."
     puts `sudo docker compose run --rm web rails db:create`
