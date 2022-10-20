@@ -15,6 +15,7 @@ AllCops:
     - 'spec/spec_helper.rb'
     - 'spec/support/**/*.rb'
     - 'Gemfile'
+    - 'db/migrate/**/*'
     - 'db/schema.rb'
     - '**/tmp/**/*'
     - '**/templates/**/*'

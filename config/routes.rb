@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :wallets
   resources :blocks, only: %i[index show]
   resources :chains
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
