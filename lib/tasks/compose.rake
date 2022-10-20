@@ -75,11 +75,11 @@ namespace :compose do
     puts "Restarting Compose... Done!"
   end
 
-  task :clean_ports do
-    puts "Cleaning Ports..."
+  task :clean_all do
+    puts "Cleaning Images..."
     puts `sudo docker compose down`
     puts `sudo docker compose rm -v`
     puts `sudo docker rm -f $(sudo docker ps -a -q)`
-    puts "Cleaning Ports... Done!"
+    puts "Cleaning Images... Done!"
   end
 end
