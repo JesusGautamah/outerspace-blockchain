@@ -3,11 +3,15 @@
     "coverage": {
       "/myapp/app/models/user.rb": {
         "lines": [
-          1,
           null,
           null,
           1,
           null,
+          null,
+          1,
+          null,
+          null,
+          1,
           null
         ]
       },
@@ -31,6 +35,12 @@
         ]
       },
       "/myapp/app/helpers/chains_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/myapp/app/helpers/wallets_helper.rb": {
         "lines": [
           1,
           null
@@ -82,6 +92,43 @@
           1,
           null,
           1,
+          null
+        ]
+      },
+      "/myapp/app/models/wallet.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          27,
+          25,
+          25,
+          null,
+          null,
+          27,
+          27,
+          null,
+          27,
+          1,
+          null,
+          26,
+          26,
+          null,
+          null,
           null
         ]
       },
@@ -218,8 +265,82 @@
           null,
           null
         ]
+      },
+      "/myapp/app/controllers/wallets_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          4,
+          null,
+          4,
+          4,
+          4,
+          2,
+          null,
+          4,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          3,
+          3,
+          4,
+          2,
+          null,
+          2,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          4,
+          2,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          7,
+          null,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1666273611
+    "timestamp": 1666284255
   }
 }

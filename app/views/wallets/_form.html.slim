@@ -1,0 +1,30 @@
+= form_with(model: @wallet) do |form|
+  - if @wallet.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@wallet.errors.count, "error")} prohibited this wallet from being saved:"
+      ul
+        - @wallet.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :user_id, style: "display: block"
+    = form.text_field :user_id
+
+  div
+    = form.label :pr_key, style: "display: block"
+    = form.text_field :pr_key
+
+  div
+    = form.label :pv_key, style: "display: block"
+    = form.text_field :pv_key
+
+  div
+    = form.label :balance, style: "display: block"
+    = form.text_field :balance
+
+  div
+    = form.label :status, style: "display: block"
+    = form.number_field :status
+
+  div
+    = form.submit
