@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Transactions
+
+#transactions
+  - @transactions.each do |transaction|
+    == render transaction
+    p
+      = link_to "Show this transaction", transaction
+
+= link_to "New transaction", new_transaction_path
