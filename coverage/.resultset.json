@@ -40,6 +40,12 @@
           null
         ]
       },
+      "/myapp/app/helpers/transactions_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/myapp/app/helpers/wallets_helper.rb": {
         "lines": [
           1,
@@ -91,6 +97,16 @@
           1,
           1,
           null,
+          1,
+          null
+        ]
+      },
+      "/myapp/app/models/transaction.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
           1,
           null
         ]
@@ -266,6 +282,53 @@
           null
         ]
       },
+      "/myapp/app/controllers/transactions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          4,
+          null,
+          4,
+          4,
+          4,
+          2,
+          null,
+          4,
+          2,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null
+        ]
+      },
       "/myapp/app/controllers/wallets_controller.rb": {
         "lines": [
           1,
@@ -341,6 +404,6 @@
         ]
       }
     },
-    "timestamp": 1666284255
+    "timestamp": 1666487900
   }
 }

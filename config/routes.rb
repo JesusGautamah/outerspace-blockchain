@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transactions
   resources :wallets
   resources :blocks, only: %i[index show]
   resources :chains
