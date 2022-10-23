@@ -7,13 +7,9 @@ RSpec.describe "/contracts", type: :request do
   let(:block) { create(:block, chain: chain) }
   let(:transaction) { create(:transaction, block: block) }
   # every signature hash is 64 characters long
-  let(:valid_attributes) { { first_sig: "a" * 64, second_sig: "b" * 64,
-                             third_sig: "c" * 64, fourth_sig: "d" * 64,
-                             status: 1, transaction_id: transaction.id } }
+  let(:valid_attributes) { { status: 1, transaction_id: transaction.id } }
 
-  let(:invalid_attributes) { { first_sig: "MyString", second_sig: "MyString",
-                               third_sig: "MyString", fourth_sig: "MyString",
-                               status: 0, transaction_id: transaction.id } }
+  let(:invalid_attributes) { { status: 0, transaction_id: "tr_one" } }
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -77,7 +73,7 @@ RSpec.describe "/contracts", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) { { first_sig: "a" * 64, second_sig: "b" * 64 } }
+      let(:new_attributes) { { status: 2 } }
 
       it "updates the requested contract" do
         contract = Contract.create! valid_attributes

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :signatures
+  resources :tickets
+  resources :pools
   resources :contracts
   resources :transactions
   resources :wallets

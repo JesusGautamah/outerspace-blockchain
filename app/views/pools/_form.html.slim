@@ -1,0 +1,30 @@
+= form_with(model: @pool) do |form|
+  - if @pool.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@pool.errors.count, "error")} prohibited this pool from being saved:"
+      ul
+        - @pool.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :block_id, style: "display: block"
+    = form.text_field :block_id
+
+  div
+    = form.label :users_count, style: "display: block"
+    = form.number_field :users_count
+
+  div
+    = form.label :signatures_count, style: "display: block"
+    = form.number_field :signatures_count
+
+  div
+    = form.label :amount, style: "display: block"
+    = form.text_field :amount
+
+  div
+    = form.label :stage, style: "display: block"
+    = form.number_field :stage
+
+  div
+    = form.submit
