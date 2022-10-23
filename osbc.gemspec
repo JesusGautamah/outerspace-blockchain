@@ -47,5 +47,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "turbo-rails", "~> 1.3"
   spec.add_runtime_dependency "stimulus-rails", "~> 1.1"
   spec.add_runtime_dependency "jbuilder", "~> 2.11"
-
 end

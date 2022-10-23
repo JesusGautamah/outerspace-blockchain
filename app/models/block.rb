@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Block < ApplicationRecord
   belongs_to :chain
   validates :nonce, presence: true

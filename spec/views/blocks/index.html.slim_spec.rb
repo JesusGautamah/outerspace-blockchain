@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "blocks/index", type: :view do
   let(:chain) { create(:chain) }
@@ -23,7 +25,7 @@ RSpec.describe "blocks/index", type: :view do
 
   it "renders a list of blocks" do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
+    cell_selector = Rails::VERSION::STRING >= "7" ? "div>p" : "tr>td"
     assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Previous Hash".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2

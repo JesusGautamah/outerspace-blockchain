@@ -1,8 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "chains/index", type: :view do
   let(:chain_hash) do
-    { 
+    {
       name: Faker::Name.name[0 .. 19], maintainer: Faker::Internet.email,
       chain_version: Faker::App.version, description: Faker::Lorem.paragraph
     }
@@ -24,7 +26,7 @@ RSpec.describe "chains/index", type: :view do
 
   it "renders a list of chains" do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
+    cell_selector = Rails::VERSION::STRING >= "7" ? "div>p" : "tr>td"
     assert_select cell_selector, text: Regexp.new(chain_hash[:name]), count: 1
     assert_select cell_selector, text: Regexp.new(chain_hash_2[:name]), count: 1
     assert_select cell_selector, text: Regexp.new(chain_hash[:maintainer]), count: 1

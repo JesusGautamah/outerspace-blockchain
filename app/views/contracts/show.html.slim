@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @contract
+
+div
+  => link_to "Edit this contract", edit_contract_path(@contract)
+  '|
+  =< link_to "Back to contracts", contracts_path
+
+  = button_to "Destroy this contract", @contract, method: :delete

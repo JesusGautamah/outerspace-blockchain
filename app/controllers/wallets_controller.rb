@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WalletsController < ApplicationController
   before_action :set_wallet, only: %i[ show edit update destroy ]
 

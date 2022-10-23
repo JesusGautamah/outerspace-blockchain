@@ -1,0 +1,34 @@
+= form_with(model: @contract) do |form|
+  - if @contract.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@contract.errors.count, "error")} prohibited this contract from being saved:"
+      ul
+        - @contract.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :first_sig, style: "display: block"
+    = form.text_field :first_sig
+
+  div
+    = form.label :second_sig, style: "display: block"
+    = form.text_field :second_sig
+
+  div
+    = form.label :third_sig, style: "display: block"
+    = form.text_field :third_sig
+
+  div
+    = form.label :fourth_sig, style: "display: block"
+    = form.text_field :fourth_sig
+
+  div
+    = form.label :status, style: "display: block"
+    = form.number_field :status
+
+  div
+    = form.label :transact_id, style: "display: block"
+    = form.text_field :transact_id
+
+  div
+    = form.submit
