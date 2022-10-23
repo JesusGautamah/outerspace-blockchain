@@ -3,18 +3,20 @@
 require "rails_helper"
 
 RSpec.describe "/transactions", type: :request do
+  let(:chain) { create(:chain) }
+  let(:block) { create(:block, chain: chain) }
   let(:valid_attributes) { { sender_key: "MyString", receiver_key: "MyString",
                              signature_time: "2022-10-22 19:10:59",
                              status: 0, data: "MyText", upl_file: "MyString",
                              upl_file_name: "MyString", upl_file_type: "MyString",
                              upl_file_size: "MyString", upl_file_hash: "MyString",
-                             amount: 1.5, fee: 1.5 } }
+                             amount: 1.5, fee: 1.5, block_id: block.id } }
   let(:invalid_attributes) { { sender_key: "MyString", receiver_key: "MyString",
                                signature_time: "2022-10-22 19:10:59",
                                status: 0, data: "MyText", upl_file: "MyString",
                                upl_file_name: "MyString", upl_file_type: "MyString",
                                upl_file_size: "MyString", upl_file_hash: "MyString",
-                               amount: 1.5, fee: 0.0 } }
+                               amount: 1.5, fee: 0.0, block_id: block.id } }
   describe "GET /index" do
     it "renders a successful response" do
       Transaction.create! valid_attributes

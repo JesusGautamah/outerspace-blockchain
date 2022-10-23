@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "transactions/show", type: :view do
+  let(:chain) { create(:chain) }
+  let(:block) { create(:block, chain: chain) }
   before(:each) do
     assign(:transaction, Transaction.create!(
       sender_key: "Sender Key",
@@ -9,7 +11,7 @@ RSpec.describe "transactions/show", type: :view do
       data: "MyText", upl_file: "MyString",
       upl_file_name: "MyString", upl_file_type: "MyString",
       upl_file_size: "MyString", upl_file_hash: "MyString",
-      amount: 1.5, fee: 1.5
+      amount: 1.5, fee: 1.5, block_id: block.id
     ))
   end
 

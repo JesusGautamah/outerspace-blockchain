@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_22_221059) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_23_011005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_221059) do
     t.float "fee", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "block_id", null: false
+    t.index ["block_id"], name: "index_transactions_on_block_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,5 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_221059) do
   end
 
   add_foreign_key "blocks", "chains"
+  add_foreign_key "transactions", "blocks"
   add_foreign_key "wallets", "users"
 end

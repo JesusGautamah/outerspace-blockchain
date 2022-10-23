@@ -38,6 +38,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:sender_key, :receiver_key, :signature_time, :status, :data, :upl_file, :upl_file_name, :upl_file_type, :upl_file_size, :upl_file_hash, :amount, :fee)
+      params.require(:transaction).permit(:sender_key, :receiver_key, :signature_time, :status, :data, :upl_file, :upl_file_name, :upl_file_type, :upl_file_size, :upl_file_hash, :amount, :fee, :block_id)
     end
 end
