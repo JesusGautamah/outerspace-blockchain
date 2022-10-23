@@ -1,0 +1,22 @@
+= form_with(model: @ticket) do |form|
+  - if @ticket.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@ticket.errors.count, "error")} prohibited this ticket from being saved:"
+      ul
+        - @ticket.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :user_id, style: "display: block"
+    = form.text_field :user_id
+
+  div
+    = form.label :pool_id, style: "display: block"
+    = form.text_field :pool_id
+
+  div
+    = form.label :status, style: "display: block"
+    = form.number_field :status
+
+  div
+    = form.submit

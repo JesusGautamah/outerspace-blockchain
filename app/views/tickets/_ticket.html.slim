@@ -1,0 +1,10 @@
+div id="#{dom_id ticket}"
+  p
+    strong User:
+    =< ticket.user.username
+  p
+    strong Pool:
+    =< ticket.pool_id
+  p
+    strong Status:
+    =< ticket.status

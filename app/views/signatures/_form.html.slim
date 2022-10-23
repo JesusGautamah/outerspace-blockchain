@@ -1,0 +1,46 @@
+= form_with(model: @signature) do |form|
+  - if @signature.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@signature.errors.count, "error")} prohibited this signature from being saved:"
+      ul
+        - @signature.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :signature, style: "display: block"
+    = form.text_field :signature
+
+  div
+    = form.label :time_ref, style: "display: block"
+    = form.datetime_field :time_ref
+
+  div
+    = form.label :contract_id, style: "display: block"
+    = form.text_field :contract_id
+
+  div
+    = form.label :common_word, style: "display: block"
+    = form.text_field :common_word
+
+  div
+    = form.label :symbol_sequence, style: "display: block"
+    = form.text_field :symbol_sequence
+
+  div
+    = form.label :number_sequence, style: "display: block"
+    = form.text_field :number_sequence
+
+  div
+    = form.label :verify_sig, style: "display: block"
+    = form.text_field :verify_sig
+
+  div
+    = form.label :block_hash, style: "display: block"
+    = form.text_field :block_hash
+
+  div
+    = form.label :signature_hash, style: "display: block"
+    = form.text_field :signature_hash
+
+  div
+    = form.submit

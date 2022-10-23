@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Pools
+
+#pools
+  - @pools.each do |pool|
+    == render pool
+    p
+      = link_to "Show this pool", pool
+
+= link_to "New pool", new_pool_path

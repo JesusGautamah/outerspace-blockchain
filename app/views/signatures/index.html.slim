@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Signatures
+
+#signatures
+  - @signatures.each do |signature|
+    == render signature
+    p
+      = link_to "Show this signature", signature
+
+= link_to "New signature", new_signature_path

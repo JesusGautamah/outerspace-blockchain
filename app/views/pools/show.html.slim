@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @pool
+
+div
+  => link_to "Edit this pool", edit_pool_path(@pool)
+  '|
+  =< link_to "Back to pools", pools_path
+
+  = button_to "Destroy this pool", @pool, method: :delete

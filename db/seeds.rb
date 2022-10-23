@@ -1,13 +1,5 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 def create_first_chain
   Chain.create(
     name: ENV["FIRST_CHAIN_NAME"],
@@ -15,6 +7,64 @@ def create_first_chain
     chain_version: "0.0.1",
     description: "This is a blockchain project generated with outerspace-blockchain."
   )
+
+  puts "Chain created"
+  puts "Chain name: #{ENV["FIRST_CHAIN_NAME"]}"
+  puts "Chain maintainer: #{ENV["FIRST_CHAIN_MAINTAINER"]}"
+end
+
+def create_acceptable_word_lists
+  create_acceptable_words
+  create_acceptable_symbol_sequences
+  create_acceptable_number_sequences
+end
+
+def create_acceptable_words
+  word_list = %w[the of and to a in
+                 is you that it he
+                 was for on are as
+                 with his they I at
+                 be this have from or
+                 one had by word but
+                 not what all were we
+                 when your can said there
+                 use an each which she do
+                 how their if will up other
+                 about out many then them
+                 these so some her would
+                 make like him into time
+                 as look two more write
+                 go see number no way could
+                 people my than first water
+                 been call who oil its now
+                 find long down day did get
+                 come made may part]
+
+  word_list.each do |word|
+    puts "word: #{word}"
+    AcceptableWord.find_or_create_by(word: word)
+  end
+end
+
+def create_acceptable_symbol_sequences
+  symbol_sequence_list = %w[!!! !@# !@#$ !@#$% !@#$%^ !@#$%^& !@#$%^&* !@#$%^&*(
+                            !@#$%^&*( )@#$%^&*( )@#$%^&*() @#$%^&*() @#$%^&*()_
+                            @#$%^&*()_ @#$%^&*()_+ #$%^&*()_+ #$%^&*()_+{
+                            #$%^&*()_+{ #$%^&*()_+{ }%^&*()_+{ }%^&*()_+{]
+  symbol_sequence_list.each do |symbol_sequence|
+    puts "symbol_sequence: #{symbol_sequence}"
+    AcceptableSymbolSequence.find_or_create_by(seq: symbol_sequence)
+  end
+end
+
+def create_acceptable_number_sequences
+  number_sequence_list = (0..9999).map { |n| format("%04d", n) }
+
+  number_sequence_list.each do |number_sequence|
+    puts "number_sequence: #{number_sequence}"
+    AcceptableNumberSequence.find_or_create_by(seq: number_sequence)
+  end
 end
 
 create_first_chain
+create_acceptable_word_lists

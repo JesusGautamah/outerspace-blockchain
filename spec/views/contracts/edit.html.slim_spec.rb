@@ -8,10 +8,6 @@ RSpec.describe "contracts/edit", type: :view do
   let(:transaction) { create(:transaction, block: block) }
   let(:contract) {
     Contract.create!(
-      first_sig:  "a" * 64,
-      second_sig: "b" * 64,
-      third_sig:  "c" * 64,
-      fourth_sig: "d" * 64,
       status: 1,
       transaction_id: transaction.id
     )

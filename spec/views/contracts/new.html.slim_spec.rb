@@ -8,10 +8,6 @@ RSpec.describe "contracts/new", type: :view do
   let(:transaction) { create(:transaction, block: block) }
   before(:each) do
     assign(:contract, Contract.new(
-      first_sig: "MyString",
-      second_sig: "MyString",
-      third_sig: "MyString",
-      fourth_sig: "MyString",
       status: 1,
       transaction_id: transaction.id
     ))
