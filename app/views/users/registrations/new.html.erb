@@ -1,29 +1,36 @@
+<div class="text-white text-center"
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field text-black">
+    <%= f.label :username, class: "text-white" %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username",class: "px-4 py-2 rounded text-black border-2 border-purple-300 focus_border-purple-900" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field text-black">
+    <%= f.label :email, class: "text-white" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "px-4 py-2 rounded text-black border-2 border-purple-300 focus_border-purple-900" %>
+  </div>
+
+  <div class="field text-black">
+    <%= f.label :password, class: "text-white" %><br />
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em class="text-white">(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "px-4 py-2 rounded text-black border-2 border-purple-300 focus_border-purple-900" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field text-black">
+    <%= f.label :password_confirmation, class: "text-white" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "px-4 py-2 rounded text-black border-2 border-purple-300 focus_border-purple-900" %>
   </div>
-
+  <br/>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white" %>
   </div>
 <% end %>
-
+<br/>
 <%= render "users/shared/links" %>
+<br/>
+</div>
