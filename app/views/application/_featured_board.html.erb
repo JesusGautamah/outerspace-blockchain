@@ -1,0 +1,93 @@
+<div class=" h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
+
+  <div class="mb-3">
+      <h1 class="text-3xl text-white font-bold">HUB</h1>
+      <p class="text-sm text-purple-500 uppercase font-bold">explore</p>
+  </div>
+
+  <div class="flex -mx-1 mb-5">
+
+      <div class="w-1/2 px-1">
+          <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%=  asset_path 'outerspc.jpg' %>) center; background-size: cover;">
+              <div class="h-24"></div>
+              <h3 class="text-lg font-bold text-white leading-tight">Blockchain History</h3>
+          </a>
+          <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%=  asset_path 'outerspc.jpg' %>) center; background-size: cover;">
+              <div class="h-32"></div>
+              <h3 class="text-lg font-bold text-white leading-tight">Outerspace Coins</h3>
+          </a>
+      </div>
+
+      <% if user_signed_in? %>
+        <div class="w-1/2 px-1">
+          <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%=  asset_path 'outerspc.jpg' %>) center; background-size: cover;">
+              <div class="h-32"></div>
+              <h3 class="text-lg font-bold text-white leading-tight">Wallet</h3>
+          </a>
+          <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%=  asset_path 'outerspc.jpg' %>) center; background-size: cover;">
+              <div class="h-24"></div>
+              <h3 class="text-lg font-bold text-white leading-tight">Mining Profile</h3>
+          </a>
+      </div>
+      <% else %>
+        <div class="w-1/2 px-1">
+            <a href="/users/sign_in" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%=  asset_path 'outerspc.jpg' %>) center; background-size: cover;">
+                <div class="h-32"></div>
+                <h3 class="text-lg font-bold text-white leading-tight">Login</h3>
+            </a>
+            <a href="/users/sign_up" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%=  asset_path 'outerspc.jpg' %>) center; background-size: cover;">
+                <div class="h-24"></div>
+                <h3 class="text-lg font-bold text-white leading-tight">Register</h3>
+            </a>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="mb-3">
+      <h1 class="text-3xl text-white font-bold">Blocks</h1>
+      <p class="text-sm text-purple-500 uppercase font-bold">Last Blocks</p>
+  </div>
+
+  <% @blocks.each do |block| %>
+    <div>
+        <a href="#}" class="flex w-full transform transition-all duration-300 scale-100 hover_scale-95">
+            <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url() center; background-size: cover;"></div>
+            <div class="pl-3 w-3/5">
+                <p class="text-xs text-purple-500 uppercase font-semibold">Name</p>
+                <h3 class="text-md font-semibold text-white leading-tight mb-3">Title</h3>
+                <div class="flex w-full items-center text-xs text-white font-medium">
+                    <div class="rounded-full w-5 h-5 mr-3" style="background: url() center; background-size: cover;"></div>
+                    <div>Text</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <hr class="border-purple-500 my-3">
+  <% end %>
+  
+  <div class="mb-3">
+      <h1 class="text-3xl text-white font-bold">Contracts</h1>
+      <p class="text-sm text-purple-500 uppercase font-bold">Last Contracts</p>
+  </div>
+
+  <% @blocks.each do |block| %>
+      <% if block %>
+          <div class="mb-5">
+              <a href="<%= url_for(block) %>" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover_scale-95" style="background: url() center; background-size: cover;">
+                  <div class="absolute top-0 right-0 -mt-3 mr-3">
+                      <div class="rounded-full bg-indigo-500 text-white text-xs py-1 pl-2 pr-3 leading-none"><i class="mdi mdi-fire text-base align-middle"></i> <span class="align-middle">FRESH</span></div>
+                  </div>
+                  <div class="h-48"></div>
+                  <h2 class="text-white text-2xl font-bold leading-tight mb-3 pr-5">Name</h2>
+                  <div class="flex w-full items-center text-sm text-gray-300 font-medium">
+                      <div class="flex-1 flex items-center">
+                          <div class="rounded-full w-8 h-8 mr-3" style="background: url() center; background-size: cover;"></div>
+                          <div>Text</div>
+                      </div>
+                      <div><i class="mdi mdi-thumb-up"></i>Loren Ipsum</div>
+                  </div>
+              </a>
+          </div>
+      <% end %>
+  <% end %>
+</div>

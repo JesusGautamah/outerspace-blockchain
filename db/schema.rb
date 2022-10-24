@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_23_114408) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_114408) do
     t.bigint "chain_id", null: false
     t.integer "contracts_count", default: 0, null: false
     t.integer "contracts_limit", default: 0, null: false
+    t.string "master_hash"
     t.index ["chain_id"], name: "index_blocks_on_chain_id"
   end
 
