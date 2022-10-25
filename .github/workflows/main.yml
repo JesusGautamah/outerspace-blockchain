@@ -42,4 +42,4 @@ jobs:
     - name: Run rake assets:precompile to precompile the frontend assets and prepare them for testing
       run: bundle exec rake assets:precompile
     - name: Run rake compose:test to Run Rspec Tests
-      run: bundle exec rake compose:test
+      run: bundle exec rake compose_test:all
