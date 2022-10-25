@@ -5,17 +5,21 @@ require "rake"
 namespace :compose do
   task :install do
     puts "Installing Blockchain and Database Containers"
-    puts `sudo docker compose build`
-    puts `sudo docker compose run web rails db:create`
-    puts `sudo docker compose run web rails db:migrate`
-    puts `sudo docker compose run web rails db:seed`
-    puts `sudo docker compose down`
+    system "sudo docker compose build"
+    puts "Creating Database"
+    system "sudo docker compose run --rm web rails db:create"
+    puts "Migrating Database"
+    system "sudo docker compose run --rm web rails db:migrate"
+    puts "Seeding Database"
+    system "sudo docker compose run --rm web rails db:seed"
+    puts "Stopping Containers"
+    system "sudo docker compose down"
     puts "Installing Blockchain and Database Containers... Done!"
     puts "This already setup your database with some initial values"
     puts "Start the containers with command: rake compose:up"
     puts "Stop the containers with command: rake compose:down"
     puts "Restart the containers with command: rake compose:restart"
-    puts "Clean up the containers with command: rake compose:clean_ports"
+    puts "Clean up the containers with command: rake compose:clean_all"
     puts "Test your containers with command: rake compose:test"
     puts "Build the containers againg with command: rake compose:build"
     puts "rake compose_db command documentation at README.md to see database commands usage examples"
@@ -28,58 +32,61 @@ namespace :compose do
 
   task :build do
     puts "Building Compose..."
-    puts `sudo docker compose build`
+    system "sudo docker compose build"
     puts "Building Compose... Done!"
   end
 
   task :up do
     puts "Running Compose..."
-    puts `sudo docker compose up -d --remove-orphans`
+    system "sudo docker compose up -d --remove-orphans"
     puts "Running Compose... Done!"
   end
 
   task :down do
     puts "Stopping Compose..."
-    `sudo docker compose down`
+    system "sudo docker compose down"
     puts "Stopping Compose... Done!"
   end
 
   task :db_detach do
     puts "Running Database Detached..."
-    puts `sudo docker compose up -d db`
+    system "sudo docker compose up -d db"
     puts "Running Database Detached... Done!"
   end
 
   task :redis_detach do
     puts "Running Redis Detached..."
-    puts `sudo docker compose up -d redis`
+    system "sudo docker compose up -d redis"
     puts "Running Redis Detached... Done!"
   end
 
   task :back_detach do
     puts "Running Backend Detached..."
-    puts `sudo docker compose up -d --remove-orphans db redis sidekiq`
+    system "sudo docker compose up -d --remove-orphans db redis sidekiq"
     puts "Running Backend Detached... Done!"
-  end
-
-  task :test do
-    puts "Running Test..."
-    puts `sudo docker compose run web bundle exec rspec`
-    puts "Running Test... Done!"
   end
 
   task :restart do
     puts "Restarting Compose..."
-    puts `sudo docker compose down`
-    puts `sudo docker compose up -d --remove-orphans`
+    puts "Stopping Compose..."
+    system "sudo docker compose down"
+    puts "Stopping Compose... Done!"
+    puts "Running Compose..."
+    system "sudo docker compose up -d --remove-orphans"
     puts "Restarting Compose... Done!"
   end
 
   task :clean_all do
     puts "Cleaning Images..."
-    puts `sudo docker compose down`
-    puts `sudo docker compose rm -v`
-    puts `sudo docker rm -f $(sudo docker ps -a -q)`
+    puts "Stopping Compose..."
+    system "sudo docker compose down"
+    puts "Stopping Compose... Done!"
+    puts "Removing Compose..."
+    system "sudo docker compose rm -v"
+    puts "Removing Compose... Done!"
+    puts "Removing Containers..."
+    system "sudo docker rm -f $(sudo docker ps -a -q)"
+    puts "Removing Containers... Done!"
     puts "Cleaning Images... Done!"
   end
 end
