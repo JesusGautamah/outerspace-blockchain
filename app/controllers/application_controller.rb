@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def home
     @blocks = blocks
+    @contracts = contracts
   end
 
   private

@@ -5,9 +5,10 @@ require "simplecov"
 SimpleCov.start "rails" do
   add_group "Services", "app/services"
   add_group "Workers", "app/workers"
+  add_group "OSBC", "lib/osbc"
+  add_group "Outerspace", "lib/outerspace"
   add_filter "app/channels"
   add_filter "app/jobs"
-  add_filter "app/controllers/users/"
 end
 
 require "faker"

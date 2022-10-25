@@ -60,5 +60,3 @@ namespace :compose_test do
     puts "Running Views Test... Done!"
   end
 end
-
-
