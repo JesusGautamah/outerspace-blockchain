@@ -10,9 +10,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    CreateWalletWorker.perform_async(resource.id)
+  end
 
   # GET /resource/edit
   # def edit

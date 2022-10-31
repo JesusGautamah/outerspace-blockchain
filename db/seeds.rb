@@ -39,9 +39,7 @@ def create_acceptable_words
                  been call who oil its now
                  find long down day did get
                  come made may part]
-
   word_list.each do |word|
-    puts "word: #{word}"
     AcceptableWord.find_or_create_by(word: word)
   end
 end
@@ -52,7 +50,6 @@ def create_acceptable_symbol_sequences
                             @#$%^&*()_ @#$%^&*()_+ #$%^&*()_+ #$%^&*()_+{
                             #$%^&*()_+{ #$%^&*()_+{ }%^&*()_+{ }%^&*()_+{]
   symbol_sequence_list.each do |symbol_sequence|
-    puts "symbol_sequence: #{symbol_sequence}"
     AcceptableSymbolSequence.find_or_create_by(seq: symbol_sequence)
   end
 end
@@ -61,10 +58,26 @@ def create_acceptable_number_sequences
   number_sequence_list = (0..9999).map { |n| format("%04d", n) }
 
   number_sequence_list.each do |number_sequence|
-    puts "number_sequence: #{number_sequence}"
     AcceptableNumberSequence.find_or_create_by(seq: number_sequence)
   end
 end
 
+
+def create_first_block
+  Block.create(
+    chain: Chain.first,
+    previous_hash: "0000000000000000000000000000000000000000000000000000000000000000",
+    block_data: "This is the first block of the blockchain.",
+    nonce: 0,
+    connections: 0,
+    contracts_count: 0,
+    contracts_limit: ENV["FIRST_CHAIN_CONTRACTS_LIMIT"].to_i,
+    # timestamp: Time.now
+  )
+
+  puts "First block created"
+end
+
 create_first_chain
 create_acceptable_word_lists
+create_first_block

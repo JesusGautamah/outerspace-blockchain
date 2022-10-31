@@ -1,9 +1,10 @@
-p style="color: green" = notice
-
-h1 Blocks
-
-#blocks
-  - @blocks.each do |block|
-    == render block
-    p
-      = link_to "Show this block", block
+.text-center.text-white
+  p style="color: green" = notice
+  
+  h1 Blocks
+  
+  #blocks
+    - @blocks.each do |block|
+      == render block
+      p
+        = link_to "Show this block", block

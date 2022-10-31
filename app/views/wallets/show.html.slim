@@ -1,10 +1,9 @@
-p style="color: green" = notice
+.text-white.text-center
+  p style="color: green" = notice
 
-== render @wallet
+  == render @wallet
 
-div
-  => link_to "Edit this wallet", edit_wallet_path(@wallet)
-  '|
-  =< link_to "Back to wallets", wallets_path
+  div
+    = link_to "Back to wallets", wallets_path
 
-  = button_to "Destroy this wallet", @wallet, method: :delete
+    / = button_to "Destroy this wallet", @wallet, method: :delete

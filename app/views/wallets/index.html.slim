@@ -1,11 +1,14 @@
-p style="color: green" = notice
+.text-white.text-center
+  p style="color: green" = notice
 
-h1 Wallets
+  h1 Wallets
 
-#wallets
-  - @wallets.each do |wallet|
-    == render wallet
-    p
-      = link_to "Show this wallet", wallet
+  #wallets
+    - @wallets.each do |wallet|
+      - if wallet.user == current_user
+        == render wallet
+        p
+          = link_to "Show this wallet", wallet
 
-= link_to "New wallet", new_wallet_path
+  / = link_to "New wallet", new_wallet_path
+  = link_to "Back to home", root_path
