@@ -61,7 +61,7 @@ class CreateTicketService < ApplicationService
       hash = Digest::SHA256.hexdigest(shuffled_string)
       block_hash = Digest::SHA256.hexdigest(@transactions.to_json)
       master_hash = Digest::SHA256.hexdigest(hash + block_hash)
-      hash, block_hash, master_hash
+      [hash, block_hash, master_hash]
     end
 
     def update_block_connections
