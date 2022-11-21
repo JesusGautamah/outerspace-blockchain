@@ -59,8 +59,11 @@ class CreateTicketService < ApplicationService
     def generate_user_acceptable_hash
       puts "Shuffled string: #{shuffled_string}"
       hash = Digest::SHA256.hexdigest(shuffled_string)
+      puts "Hash: #{hash}"
       block_hash = Digest::SHA256.hexdigest(@transactions.to_json)
+      puts "Block hash: #{block_hash}"
       master_hash = Digest::SHA256.hexdigest(hash + block_hash)
+      puts "Master hash: #{master_hash}"
       [hash, block_hash, master_hash]
     end
 

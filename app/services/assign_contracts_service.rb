@@ -65,7 +65,6 @@ class AssignContractsService < ApplicationService
       @signatures ||= []
     end
 
-    # block master hash is all unique contracts signatures hashed in SHA256
     def generate_master_hash
       Digest::SHA256.hexdigest(complete_contracts.map(&:signatures).flatten.map(&:signature).join)
     end
