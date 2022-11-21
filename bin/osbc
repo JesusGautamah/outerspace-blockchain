@@ -10,67 +10,67 @@ module Osbc
     end
 
     private
-      attr_reader :path
+    attr_reader :path
 
-      EXCLUDE_FILES = %w[.git LICENSE README.md Rakefile
-                         bin/osbc lib/outerspace/blockchain/version.rb
-                         outerspace-blockchain.gemspec].freeze
+    EXCLUDE_FILES = %w[.git LICENSE README.md Rakefile
+                       bin/osbc lib/outerspace/blockchain/version.rb
+                       outerspace-blockchain.gemspec].freeze
 
-      def generated_blockchain?
-        create_folder
-        copy_files
-        delete_excluded_files
-        generate_readme
-        generate_rakefile
-        true
-      rescue StandardError => e
-        @error_message = "Error: #{e.message}"
-        false
+    def generated_blockchain?
+      create_folder
+      copy_files
+      delete_excluded_files
+      generate_readme
+      generate_rakefile
+      true
+    rescue StandardError => e
+      @error_message = "Error: #{e.message}"
+      false
+    end
+
+    def create_folder
+      puts "Creating folder..."
+      `mkdir #{path}`
+    end
+
+    def copy_files
+      puts "Generating files..."
+      gem_path = Gem::Specification.find_by_name("osbc").gem_dir
+      `cp -r #{gem_path}/. #{path}`
+    end
+
+    def delete_excluded_files
+      puts "Deleting excluded files..."
+      EXCLUDE_FILES.each do |file|
+        `rm -rf #{path}/#{file}`
       end
+    end
 
-      def create_folder
-        puts "Creating folder..."
-        `mkdir #{path}`
-      end
-
-      def copy_files
-        puts "Generating files..."
-        gem_path = Gem::Specification.find_by_name("osbc").gem_dir
-        `cp -r #{gem_path}/. #{path}`
-      end
-
-      def delete_excluded_files
-        puts "Deleting excluded files..."
-        EXCLUDE_FILES.each do |file|
-          `rm -rf #{path}/#{file}`
-        end
-      end
-
-      def generate_readme
-        puts "Generating README..."
-        readme_content = ["# #{path}", "This is a blockchain project generated with [osbc](https://github.com/outerspace-coding/outerspace-blockchain)."]
-        File.open("#{path}/README.md", "w") { |f| f.write(readme_content.join("
+    def generate_readme
+      puts "Generating README..."
+      readme_content = ["# #{path}", "This is a blockchain project generated with [osbc](https://github.com/outerspace-coding/outerspace-blockchain)."]
+      File.open("#{path}/README.md", "w") { |f| f.write(readme_content.join("
 ")) }
-      end
+    end
 
-      def generate_rakefile
-        puts "Generating Rakefile..."
-        rakefile_content = ["require_relative 'config/application'", "Rails.application.load_tasks"]
-        File.open("#{path}/Rakefile", "w") { |f| f.write(rakefile_content.join("
+    def generate_rakefile
+      puts "Generating Rakefile..."
+      rakefile_content = ["require_relative 'config/application'", "Rails.application.load_tasks"]
+      File.open("#{path}/Rakefile", "w") { |f| f.write(rakefile_content.join("
 ")) }
-      end
+    end
 
-      def success_message
-        puts "Your blockchain project was generated successfully!"
-        puts "Remember to have docker installed in your machine."
-        puts "You can setup it easily with the following commands:"
-        puts "cd #{path}"
-        puts "rake compose:install"
-      end
+    def success_message
+      puts "Your blockchain project was generated successfully!"
+      puts "Remember to have docker installed in your machine."
+      puts "You can setup it easily with the following commands:"
+      puts "cd #{path}"
+      puts "rake compose:install"
+    end
 
-      def error_message
-        @error_message ||= "Error: Something went wrong"
-      end
+    def error_message
+      @error_message ||= "Error: Something went wrong"
+    end
   end
 end
 

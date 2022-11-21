@@ -28,7 +28,7 @@ RSpec.describe "/signatures", type: :request do
   let(:acceptable_word) { create(:acceptable_word) }
   let(:acceptable_symbol_sequence) { create(:acceptable_symbol_sequence) }
   let(:acceptable_number_sequence) { create(:acceptable_number_sequence) }
-  let(:valid_attributes) { { signature: "a" * 64, contract_id: contract.id , user_id: user.id , ticket_id: ticket.id } }
+  let(:valid_attributes) { { signature: "a" * 64, contract_id: contract.id, user_id: user.id, ticket_id: ticket.id } }
 
   let(:invalid_attributes) {
     { signature: "a" * 64,

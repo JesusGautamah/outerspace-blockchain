@@ -12,9 +12,9 @@ class CreateWalletService < ApplicationService
   end
 
   private
-    attr_reader :user_id
+  attr_reader :user_id
 
-    def create_wallet
-      Wallet.create(user_id: user_id) ? true : false
-    end
+  def create_wallet
+    Wallet.create(user_id: user_id) ? true : false
+  end
 end

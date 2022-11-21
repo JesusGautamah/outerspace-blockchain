@@ -12,7 +12,7 @@ class WalletsController < ApplicationController
   end
 
   private
-    def set_wallet
-      @wallet = Wallet.find(params[:id])
-    end
+  def set_wallet
+    @wallet = Wallet.find(params[:id])
+  end
 end

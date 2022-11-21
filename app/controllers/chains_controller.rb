@@ -60,13 +60,13 @@ class ChainsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chain
-      @chain = Chain.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chain
+    @chain = Chain.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def chain_params
-      params.require(:chain).permit(:name, :blocks_count, :maintainer, :chain_version, :description)
-    end
+  # Only allow a list of trusted parameters through.
+  def chain_params
+    params.require(:chain).permit(:name, :blocks_count, :maintainer, :chain_version, :description)
+  end
 end

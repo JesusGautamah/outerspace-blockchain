@@ -53,24 +53,24 @@ class TicketsController < ApplicationController
   end
 
   private
-    def create_ticket
-      CreateTicketWorker.perform_async(current_user.id, current_pool.id, time_ref)
-    end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ticket
-      @ticket = Ticket.find(params[:id])
-    end
+  def create_ticket
+    CreateTicketWorker.perform_async(current_user.id, current_pool.id, time_ref)
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ticket
+    @ticket = Ticket.find(params[:id])
+  end
 
-    def time_ref
-      @time_ref = block_transactions.first.created_at
-    end
+  def time_ref
+    @time_ref = block_transactions.first.created_at
+  end
 
-    def no_transactions_response
-      redirect_to root_path, notice: "No transactions yet"
-    end
+  def no_transactions_response
+    redirect_to root_path, notice: "No transactions yet"
+  end
 
-    # Only allow a list of trusted parameters through.
-    def ticket_params
-      params.require(:ticket).permit(:user_id, :pool_id, :status, :time_ref)
-    end
+  # Only allow a list of trusted parameters through.
+  def ticket_params
+    params.require(:ticket).permit(:user_id, :pool_id, :status, :time_ref)
+  end
 end

@@ -15,9 +15,9 @@ class CreateTicketWorker < ApplicationWorker
   end
 
   private
-    attr_reader :user_id, :pool_id, :time_ref
+  attr_reader :user_id, :pool_id, :time_ref
 
-    def create_ticket
-      CreateTicketService.new(user_id, pool_id, time_ref).call
-    end
+  def create_ticket
+    CreateTicketService.new(user_id, pool_id, time_ref).call
+  end
 end

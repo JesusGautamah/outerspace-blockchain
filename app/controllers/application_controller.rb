@@ -25,48 +25,48 @@ class ApplicationController < ActionController::Base
   def privacy_policy; end
 
   private
-    def blocks
-      @blocks = Block.all.order(created_at: :desc).limit(5)
-    end
+  def blocks
+    @blocks = Block.all.order(created_at: :desc).limit(5)
+  end
 
-    def contracts
-      @contracts = Contract.last(5)
-    end
+  def contracts
+    @contracts = Contract.last(5)
+  end
 
-    def current_block
-      @current_block = Block.find_by(master_hash: nil)
-    end
+  def current_block
+    @current_block = Block.find_by(master_hash: nil)
+  end
 
-    def current_pool
-      @current_pool = Pool.find_by(block_id: current_block.id)
-    end
+  def current_pool
+    @current_pool = Pool.find_by(block_id: current_block.id)
+  end
 
-    def block_transactions
-      @block_transactions = Transaction.where(block_id: current_block.id)
-    end
+  def block_transactions
+    @block_transactions = Transaction.where(block_id: current_block.id)
+  end
 
-    def set_contracts
-      contracts
-    end
+  def set_contracts
+    contracts
+  end
 
-    def set_blocks
-      blocks
-    end
+  def set_blocks
+    blocks
+  end
 
-    def set_current_block
-      current_block
-    end
+  def set_current_block
+    current_block
+  end
 
-    def set_current_pool
-      current_pool
-    end
+  def set_current_pool
+    current_pool
+  end
 
-    def set_block_transactions
-      block_transactions
-    end
+  def set_block_transactions
+    block_transactions
+  end
 
   protected
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up)
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up)
+  end
 end

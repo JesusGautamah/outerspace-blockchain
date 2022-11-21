@@ -61,13 +61,13 @@ class PoolsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pool
-      @pool = Pool.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pool
+    @pool = Pool.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def pool_params
-      params.require(:pool).permit(:block_id, :users_count, :signatures_count, :amount, :stage)
-    end
+  # Only allow a list of trusted parameters through.
+  def pool_params
+    params.require(:pool).permit(:block_id, :users_count, :signatures_count, :amount, :stage)
+  end
 end
