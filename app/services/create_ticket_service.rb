@@ -53,11 +53,12 @@ class CreateTicketService < ApplicationService
       puts "Word: #{word}"
       puts "Number sequence: #{number_sequence}"
       puts "Symbol sequence: #{symbol_sequence}"
-      (word + number_sequence + symbol_sequence).split("").shuffle.join
+      string_sum = (word + number_sequence + symbol_sequence).split("").shuffle.join
+      puts "Shuffled string: #{string_sum}"
+      string_sum
     end
 
     def generate_user_acceptable_hash
-      puts "Shuffled string: #{shuffled_string}"
       hash = Digest::SHA256.hexdigest(shuffled_string)
       puts "Hash: #{hash}"
       block_hash = Digest::SHA256.hexdigest(@transactions.to_json)
