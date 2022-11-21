@@ -1,10 +1,11 @@
-p style="color: green" = notice
+.text-white.text-center
 
-== render @wallet
 
-div
-  => link_to "Edit this wallet", edit_wallet_path(@wallet)
-  '|
-  =< link_to "Back to wallets", wallets_path
-
-  = button_to "Destroy this wallet", @wallet, method: :delete
+  .row
+    .col-md-6.offset-md-3.col-sm-12
+      == render @wallet
+  br
+  div
+    = link_to "Back to wallets", wallets_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br
+    / = button_to "Destroy this wallet", @wallet, method: :delete

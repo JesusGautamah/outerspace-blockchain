@@ -1,0 +1,12 @@
+.text-white.text-center
+
+
+  h1 Contracts
+
+  #contracts
+    - @contracts.each do |contract|
+      == render contract
+      br
+      p
+        = link_to "Show this contract", contract, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+      br

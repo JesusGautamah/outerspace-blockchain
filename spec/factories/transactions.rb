@@ -3,7 +3,6 @@ FactoryBot.define do
     sender_key { "MyString" }
     receiver_key { "MyString" }
     signature_time { "2022-10-22 19:10:59" }
-    confirmed { false }
     status { 0 }
     data { "MyText" }
     upl_file { "MyString" }

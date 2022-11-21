@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "chains/edit", type: :view do
   let(:chain) {
@@ -19,7 +21,6 @@ RSpec.describe "chains/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", chain_path(chain), "post" do
-
       assert_select "input[name=?]", "chain[name]"
 
       assert_select "input[name=?]", "chain[blocks_count]"

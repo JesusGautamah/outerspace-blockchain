@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /transactions or /transactions.json
   def index
@@ -17,20 +20,22 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
-
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
+    @receiver_key = transaction_params[:receiver_key]
+    @amount = transaction_params[:amount]
+    @sender_key = Wallet.find_by(user_id: current_user.id).pv_key
+    create_transaction_in_block
+    redirect_to transactions_path, notice: "Processing transaction, please wait a minute and refresh the page"
   end
 
   private
+    def create_transaction_in_block
+      block = Block.where(master_hash: nil).first
+      work.perform_async(@receiver_key, @sender_key, @amount, block.id)
+    end
+
+    def work
+      TransactionToBlockWorker
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
       @transaction = Transaction.find(params[:id])

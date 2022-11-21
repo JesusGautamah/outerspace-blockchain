@@ -1,0 +1,10 @@
+.text-white.text-center
+
+
+  h1 Signatures
+
+  #signatures
+    - @signatures.each do |signature|
+      == render signature
+      p
+        = link_to "Show this signature", signature

@@ -4,7 +4,7 @@ class CreateWallets < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.string :pr_key, null: false
       t.string :pv_key, null: false
-      t.float :balance, null: false, default: 0.0
+      t.decimal :balance, null: false, default: 0.0, precision: 16, scale: 2
       t.integer :status, null: false, default: 0
 
       t.timestamps

@@ -7,7 +7,7 @@ services:
       - 6379:6379
     volumes:
       - ./data:/data
-    command: redis-server --appendonly yes
+    command: redis-server
   db:
     image: postgres
     ports: 
@@ -38,9 +38,8 @@ services:
     depends_on:
       - redis
       - db
-    environment:
-      REDIS_URL: redis://redis:6379
-      DATABASE_URL: postgres://postgres:secret@db:5432
+    env_file:
+      - .env
   chrome:
     image: selenium/standalone-chrome
     ports:

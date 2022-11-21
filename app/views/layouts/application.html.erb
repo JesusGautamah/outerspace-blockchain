@@ -11,9 +11,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="backimage">
+    <main>
+      <%= render "layouts/navbar" %>
+
+
+      <div class="md_container md_mx-auto px-5 w-600 h-full bg-future" >
+        <% if notice %>
+          <%= render "layouts/notice" %>
+        <% end %>
+
+        <% if alert %>
+          <%= render "layouts/alert" %>
+        <% end %>
+
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

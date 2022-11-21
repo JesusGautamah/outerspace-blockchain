@@ -60,6 +60,12 @@ gem "slim-rails", "~> 3.5"
 # Devise
 gem "devise", "~> 4.8"
 
+# Rails Controller Testing
+gem "rails-controller-testing", "~> 1.0"
+
+# Active Record Import
+gem "activerecord-import"
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

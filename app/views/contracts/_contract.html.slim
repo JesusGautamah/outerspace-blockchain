@@ -1,0 +1,8 @@
+div id="#{dom_id contract}"
+  p#status
+    strong Status:
+    =< "#{contract.status}/#{ENV["SIGNATURES_LIMIT"]} signatures"
+    
+  p#transaction
+    strong Transaction:
+    =< contract.transaction_id

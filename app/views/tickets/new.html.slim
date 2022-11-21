@@ -1,0 +1,10 @@
+.text-white.text-center
+  h1 New ticket
+
+  == render "form", ticket: @ticket
+
+  br
+
+  div
+    = link_to "Back to tickets", tickets_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br

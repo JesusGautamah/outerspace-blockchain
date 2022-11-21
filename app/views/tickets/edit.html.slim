@@ -1,0 +1,10 @@
+h1 Editing ticket
+
+== render "form", ticket: @ticket
+
+br
+
+div
+  => link_to "Show this ticket", @ticket
+  '|
+  =< link_to "Back to tickets", tickets_path

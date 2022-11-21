@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "blocks/new", type: :view do
   let(:chain) { create(:chain) }
@@ -16,7 +18,6 @@ RSpec.describe "blocks/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", blocks_path, "post" do
-
       assert_select "input[name=?]", "block[nonce]"
 
       assert_select "input[name=?]", "block[previous_hash]"

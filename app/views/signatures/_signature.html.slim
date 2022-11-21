@@ -1,0 +1,28 @@
+div id="#{dom_id signature}"
+  p
+    strong Signature:
+    =< signature.signature
+  / p
+  /   strong Time ref:
+  /   =< signature.time_ref
+  p
+    strong Contract:
+    =< signature.contract_id
+  / p
+  /   strong Common word:
+  /   =< signature.common_word
+  / p
+  /   strong Symbol sequence:
+  /   =< signature.symbol_sequence
+  / p
+  /   strong Number sequence:
+  /   =< signature.number_sequence
+  / p
+  /   strong Verify sig:
+  /   =< signature.verify_sig
+  / p
+  /   strong Block hash:
+  /   =< signature.block_hash
+  / p
+  /   strong Signature hash:
+  /   =< signature.signature_hash

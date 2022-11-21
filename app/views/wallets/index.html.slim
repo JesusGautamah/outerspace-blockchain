@@ -1,11 +1,18 @@
-p style="color: green" = notice
+.text-white.text-center
 
-h1 Wallets
 
-#wallets
-  - @wallets.each do |wallet|
-    == render wallet
-    p
-      = link_to "Show this wallet", wallet
+  h1 Wallets
 
-= link_to "New wallet", new_wallet_path
+  #wallets
+    - if @wallets.user == current_user
+      == render @wallets
+      br
+      p
+        = link_to "Show this wallet", @wallets, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+      br
+
+  / = link_to "New wallet", new_wallet_path
+  br
+  = link_to "Back to home", root_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br
+  br
