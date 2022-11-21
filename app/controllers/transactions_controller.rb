@@ -28,21 +28,21 @@ class TransactionsController < ApplicationController
   end
 
   private
-  def create_transaction_in_block
-    block = Block.where(master_hash: nil).first
-    work.perform_async(@receiver_key, @sender_key, @amount, block.id)
-  end
+    def create_transaction_in_block
+      block = Block.where(master_hash: nil).first
+      work.perform_async(@receiver_key, @sender_key, @amount, block.id)
+    end
 
-  def work
-    TransactionToBlockWorker
-  end
-  # Use callbacks to share common setup or constraints between actions.
-  def set_transaction
-    @transaction = Transaction.find(params[:id])
-  end
+    def work
+      TransactionToBlockWorker
+    end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_transaction
+      @transaction = Transaction.find(params[:id])
+    end
 
-  # Only allow a list of trusted parameters through.
-  def transaction_params
-    params.require(:transaction).permit(:sender_key, :receiver_key, :signature_time, :status, :data, :upl_file, :upl_file_name, :upl_file_type, :upl_file_size, :upl_file_hash, :amount, :fee, :block_id)
-  end
+    # Only allow a list of trusted parameters through.
+    def transaction_params
+      params.require(:transaction).permit(:sender_key, :receiver_key, :signature_time, :status, :data, :upl_file, :upl_file_name, :upl_file_type, :upl_file_size, :upl_file_hash, :amount, :fee, :block_id)
+    end
 end

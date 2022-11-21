@@ -51,32 +51,32 @@ class ApplicationWorker
   end
 
   private
-  def dev_error(e)
-    if env_acceptable?
-      puts "#{e.class}: #{e.message}"
-      puts e.backtrace
+    def dev_error(e)
+      if env_acceptable?
+        puts "#{e.class}: #{e.message}"
+        puts e.backtrace
+      end
     end
-  end
 
-  def user_exists?
-    User.find_by(id: user_id).present?
-  end
+    def user_exists?
+      User.find_by(id: user_id).present?
+    end
 
-  def pool_exists?
-    Pool.find_by(id: pool_id).present?
-  end
+    def pool_exists?
+      Pool.find_by(id: pool_id).present?
+    end
 
-  def block_exists?
-    Block.find_by(id: block_id).present?
-  rescue NameError
-    false
-  end
+    def block_exists?
+      Block.find_by(id: block_id).present?
+    rescue NameError
+      false
+    end
 
-  def wallet_exists?(method, key)
-    Wallet.find_by(method => key).present?
-  end
+    def wallet_exists?(method, key)
+      Wallet.find_by(method => key).present?
+    end
 
-  def env_acceptable?
-    Rails.env.development? || Rails.env.test?
-  end
+    def env_acceptable?
+      Rails.env.development? || Rails.env.test?
+    end
 end

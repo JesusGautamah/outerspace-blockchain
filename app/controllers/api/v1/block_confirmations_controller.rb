@@ -30,36 +30,36 @@ class Api::V1::BlockConfirmationsController < ActionController::API
   end
 
   private
-  def find_user_by_header
-    return unless request.headers["X-Api-Key"].present?
-    api_key = request.headers["X-Api-Key"]
-    @user = User.find_by(api_key: api_key)
-    return unless @user.present?
-    @user.api_secret == request.headers["X-Api-Secret"]
-  end
+    def find_user_by_header
+      return unless request.headers["X-Api-Key"].present?
+      api_key = request.headers["X-Api-Key"]
+      @user = User.find_by(api_key: api_key)
+      return unless @user.present?
+      @user.api_secret == request.headers["X-Api-Secret"]
+    end
 
-  def unauthorized_response
-    render json: { error: "Unauthorized" }, status: :unauthorized
-  end
+    def unauthorized_response
+      render json: { error: "Unauthorized" }, status: :unauthorized
+    end
 
-  def ticket_not_found_response
-    render json: { error: "Ticket not found" }, status: :not_found
-  end
+    def ticket_not_found_response
+      render json: { error: "Ticket not found" }, status: :not_found
+    end
 
-  def confirmation_hash_not_found_response
-    render json: { error: "Confirmation hash not found" }, status: :not_found
-  end
+    def confirmation_hash_not_found_response
+      render json: { error: "Confirmation hash not found" }, status: :not_found
+    end
 
-  def assign_contract
-    AssignContractWorker.perform_async(@ticket.id)
-    render json: { message: "Contract assigned" }, status: :ok
-  end
+    def assign_contract
+      AssignContractWorker.perform_async(@ticket.id)
+      render json: { message: "Contract assigned" }, status: :ok
+    end
 
-  def not_valid_confirmation_hash_response
-    render json: { error: "Not valid confirmation hash" }, status: :not_found
-  end
+    def not_valid_confirmation_hash_response
+      render json: { error: "Not valid confirmation hash" }, status: :not_found
+    end
 
-  def block_confirmation_params
-    params.permit(:user_confirmation_hash)
-  end
+    def block_confirmation_params
+      params.permit(:user_confirmation_hash)
+    end
 end

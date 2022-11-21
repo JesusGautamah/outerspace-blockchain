@@ -13,9 +13,9 @@ class CreateWalletWorker < ApplicationWorker
   end
 
   private
-  attr_reader :user_id
+    attr_reader :user_id
 
-  def create_wallet
-    CreateWalletService.new(user_id).call
-  end
+    def create_wallet
+      CreateWalletService.new(user_id).call
+    end
 end

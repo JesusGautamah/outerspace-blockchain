@@ -11,7 +11,7 @@ class Block < ApplicationRecord
   has_one :pool, dependent: :destroy, inverse_of: :block
 
   private
-  def create_pool
-    Pool.create(block_id: self.id)
-  end
+    def create_pool
+      Pool.create(block_id: self.id)
+    end
 end
