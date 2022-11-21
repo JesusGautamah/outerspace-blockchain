@@ -12,30 +12,6 @@ class SignaturesController < ApplicationController
   def show
   end
 
-  # GET /signatures/new
-  def new
-    @signature = Signature.new
-  end
-
-  # GET /signatures/1/edit
-  def edit
-  end
-
-  # POST /signatures or /signatures.json
-  def create
-    @signature = Signature.new(signature_params)
-
-    respond_to do |format|
-      if @signature.save
-        format.html { redirect_to signature_url(@signature), notice: "Signature was successfully created." }
-        format.json { render :show, status: :created, location: @signature }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @signature.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_signature

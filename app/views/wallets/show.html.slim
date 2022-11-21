@@ -1,9 +1,11 @@
 .text-white.text-center
-  p style="color: green" = notice
 
-  == render @wallet
 
+  .row
+    .col-md-6.offset-md-3.col-sm-12
+      == render @wallet
+  br
   div
-    = link_to "Back to wallets", wallets_path
-
+    = link_to "Back to wallets", wallets_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br
     / = button_to "Destroy this wallet", @wallet, method: :delete

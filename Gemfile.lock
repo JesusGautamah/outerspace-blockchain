@@ -54,6 +54,8 @@ GEM
     activerecord (7.0.4)
       activemodel (= 7.0.4)
       activesupport (= 7.0.4)
+    activerecord-import (1.4.1)
+      activerecord (>= 4.2)
     activestorage (7.0.4)
       actionpack (= 7.0.4)
       activejob (= 7.0.4)
@@ -172,6 +174,10 @@ GEM
       activesupport (= 7.0.4)
       bundler (>= 1.15.0)
       railties (= 7.0.4)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -300,6 +306,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-import
   bootsnap (~> 1.13)
   capybara (~> 3.37)
   database_cleaner-active_record (~> 2.0)
@@ -312,6 +319,7 @@ DEPENDENCIES
   pg (~> 1.4)
   puma (~> 5.6)
   rails (~> 7.0)
+  rails-controller-testing (~> 1.0)
   rspec-rails (~> 6.0)
   rubocop-rails (~> 2.16)
   rubocop-rspec (~> 2.13)

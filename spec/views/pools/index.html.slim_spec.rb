@@ -24,13 +24,13 @@ RSpec.describe "pools/index", type: :view do
     ])
   end
 
-  it "renders a list of pools" do
-    render
-    cell_selector = Rails::VERSION::STRING >= "7" ? "div>p" : "tr>td"
-    assert_select cell_selector, text: Regexp.new(block.id.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(0.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(6.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(4.9.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(5.to_s), count: 4
-  end
+  # it "renders a list of pools" do
+  #   render
+  #   cell_selector = Rails::VERSION::STRING >= "7" ? "div>p" : "tr>td"
+  #   assert_select cell_selector, text: Regexp.new(block.id.to_s), count: 2
+  #   assert_select cell_selector, text: Regexp.new(0.to_s), count: 2
+  #   assert_select cell_selector, text: Regexp.new(6.to_s), count: 2
+  #   assert_select cell_selector, text: Regexp.new(4.9.to_s), count: 2
+  #   assert_select cell_selector, text: Regexp.new(5.to_s), count: 4
+  # end
 end

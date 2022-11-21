@@ -1,10 +1,8 @@
-p style="color: green" = notice
+.text-center.text-white
 
-== render @pool
 
-div
-  => link_to "Edit this pool", edit_pool_path(@pool)
-  '|
-  =< link_to "Back to pools", pools_path
-
-  = button_to "Destroy this pool", @pool, method: :delete
+  == render @pool
+  br
+  div
+    = link_to "Back to pools", pools_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br

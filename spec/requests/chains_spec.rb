@@ -15,6 +15,8 @@ require "rails_helper"
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/chains", type: :request do
+  let(:chain) { create(:chain) }
+  let(:block) { create(:block, chain: chain) }
   let(:valid_attributes) do
     { name: "some chain", maintainer: Faker::Internet.email,
       chain_version: Faker::App.version, description: Faker::Lorem.paragraph }
@@ -22,6 +24,11 @@ RSpec.describe "/chains", type: :request do
 
   let(:invalid_attributes) do
     { name: nil, maintainer: nil, chain_version: nil, description: nil }
+  end
+
+  before(:each) do
+    chain
+    block
   end
 
   describe "GET /index" do

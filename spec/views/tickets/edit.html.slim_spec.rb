@@ -19,16 +19,4 @@ RSpec.describe "tickets/edit", type: :view do
   before(:each) do
     assign(:ticket, ticket)
   end
-
-  it "renders the edit ticket form" do
-    render
-
-    assert_select "form[action=?][method=?]", ticket_path(ticket), "post" do
-      assert_select "input[name=?]", "ticket[user_id]"
-
-      assert_select "input[name=?]", "ticket[pool_id]"
-
-      assert_select "input[name=?]", "ticket[status]"
-    end
-  end
 end

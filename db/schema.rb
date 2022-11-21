@@ -10,39 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_080357) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "acceptable_number_sequences", force: :cascade do |t|
-    t.string "seq"
+    t.string "seq", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "acceptable_symbol_sequences", force: :cascade do |t|
-    t.string "seq"
+    t.string "seq", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "acceptable_words", force: :cascade do |t|
-    t.string "word"
+    t.string "word", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "blocks", force: :cascade do |t|
-    t.integer "nonce"
+    t.integer "nonce", default: 0, null: false
     t.string "previous_hash"
     t.text "block_data"
-    t.string "connections"
+    t.integer "connections", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "chain_id", null: false
     t.integer "contracts_count", default: 0, null: false
     t.integer "contracts_limit", default: 0, null: false
     t.string "master_hash"
+    t.integer "transactions_count", default: 0, null: false
     t.index ["chain_id"], name: "index_blocks_on_chain_id"
   end
 
@@ -54,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "balance", precision: 16, scale: 2, default: "0.0", null: false
     t.index ["name"], name: "index_chains_on_name", unique: true
   end
 
@@ -69,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
     t.bigint "block_id", null: false
     t.integer "users_count", default: 0, null: false
     t.integer "signatures_count", default: 0, null: false
-    t.float "amount", default: 0.0, null: false
+    t.decimal "amount", precision: 16, scale: 2, default: "0.0", null: false
     t.integer "stage", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,17 +80,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
 
   create_table "signatures", force: :cascade do |t|
     t.string "signature", null: false
-    t.datetime "time_ref", null: false
     t.bigint "contract_id", null: false
-    t.string "common_word", null: false
-    t.string "symbol_sequence", null: false
-    t.string "number_sequence", null: false
-    t.string "verify_sig", null: false
-    t.string "block_hash", null: false
-    t.string "signature_hash", null: false
+    t.bigint "ticket_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contract_id"], name: "index_signatures_on_contract_id"
+    t.index ["ticket_id"], name: "index_signatures_on_ticket_id"
+    t.index ["user_id"], name: "index_signatures_on_user_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -98,7 +97,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_acceptable_hash"
+    t.string "confirmation_hash"
+    t.string "block_hash"
     t.datetime "time_ref"
+    t.text "transaction_id_list", default: [], array: true
     t.index ["pool_id"], name: "index_tickets_on_pool_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -106,7 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
   create_table "transactions", force: :cascade do |t|
     t.string "sender_key", null: false
     t.string "receiver_key", null: false
-    t.time "signature_time", null: false
+    t.time "signature_time"
     t.integer "status", default: 0, null: false
     t.text "data"
     t.string "upl_file"
@@ -114,7 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
     t.string "upl_file_type"
     t.string "upl_file_size"
     t.string "upl_file_hash"
-    t.float "amount", default: 0.0, null: false
+    t.decimal "amount", precision: 16, scale: 2, default: "0.0", null: false
     t.float "fee", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -142,7 +144,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "acceptable_word_list"
+    t.text "acceptable_words", default: [], null: false, array: true
+    t.text "acceptable_number_sequences", default: [], null: false, array: true
+    t.text "acceptable_symbol_sequences", default: [], null: false, array: true
+    t.string "api_key"
+    t.string "api_secret"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -154,7 +160,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
     t.bigint "user_id", null: false
     t.string "pr_key", null: false
     t.string "pv_key", null: false
-    t.float "balance", default: 0.0, null: false
+    t.decimal "balance", precision: 16, scale: 2, default: "0.0", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -164,6 +170,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_125047) do
   add_foreign_key "blocks", "chains"
   add_foreign_key "pools", "blocks"
   add_foreign_key "signatures", "contracts"
+  add_foreign_key "signatures", "tickets"
+  add_foreign_key "signatures", "users"
   add_foreign_key "tickets", "pools"
   add_foreign_key "tickets", "users"
   add_foreign_key "transactions", "blocks"

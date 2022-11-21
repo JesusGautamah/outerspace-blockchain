@@ -1,10 +1,8 @@
-p style="color: green" = notice
+.text-white.text-center
 
-== render @ticket
 
-div
-  => link_to "Edit this ticket", edit_ticket_path(@ticket)
-  '|
-  =< link_to "Back to tickets", tickets_path
-
-  = button_to "Destroy this ticket", @ticket, method: :delete
+  == render @ticket
+  br
+  div
+    = link_to "Back to tickets", tickets_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br

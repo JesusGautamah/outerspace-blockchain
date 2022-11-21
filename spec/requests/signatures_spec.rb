@@ -28,17 +28,7 @@ RSpec.describe "/signatures", type: :request do
   let(:acceptable_word) { create(:acceptable_word) }
   let(:acceptable_symbol_sequence) { create(:acceptable_symbol_sequence) }
   let(:acceptable_number_sequence) { create(:acceptable_number_sequence) }
-  let(:valid_attributes) {
-    { signature: "a" * 64,
-      contract_id: contract.id,
-      common_word: acceptable_word.word,
-      symbol_sequence: acceptable_symbol_sequence.seq,
-      number_sequence: acceptable_number_sequence.seq,
-      verify_sig: "Verify Sig",
-      block_hash: "Block Hash",
-      signature_hash: "Hashed",
-      time_ref: ticket.time_ref }
-  }
+  let(:valid_attributes) { { signature: "a" * 64, contract_id: contract.id , user_id: user.id , ticket_id: ticket.id } }
 
   let(:invalid_attributes) {
     { signature: "a" * 64,
@@ -65,42 +55,6 @@ RSpec.describe "/signatures", type: :request do
       signature = Signature.create! valid_attributes
       get signature_url(signature)
       expect(response).to be_successful
-    end
-  end
-
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_signature_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Signature" do
-        expect {
-          post signatures_url, params: { signature: valid_attributes }
-        }.to change(Signature, :count).by(1)
-      end
-
-      it "redirects to the created signature" do
-        post signatures_url, params: { signature: valid_attributes }
-        expect(response).to redirect_to(signature_url(Signature.last))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Signature" do
-        expect {
-          post signatures_url, params: { signature: invalid_attributes }
-        }.to change(Signature, :count).by(0)
-      end
-
-
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post signatures_url, params: { signature: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
     end
   end
 end

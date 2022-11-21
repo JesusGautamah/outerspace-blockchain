@@ -1,10 +1,12 @@
 .text-center.text-white
-  p style="color: green" = notice
+
   
-  h1 Blocks
+  h1[style="font-size: 25px; font-weight: 600;"] Blockchain
   
   #blocks
     - @blocks.each do |block|
       == render block
+      br
       p
-        = link_to "Show this block", block
+        = link_to "Show this block", block, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+      br

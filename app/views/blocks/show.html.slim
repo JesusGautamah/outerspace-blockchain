@@ -1,8 +1,8 @@
-p style="color: green" = notice
+.text-center.text-white
 
-== render @block
 
-div
-  = link_to "Back to blocks", blocks_path
+  == render @block
   br
-  = button_to "Destroy this block", @block, method: :delete
+  div
+    = link_to "Back to blocks", blocks_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br

@@ -6,17 +6,21 @@
         - @ticket.errors.each do |error|
           li = error.full_message
 
-  div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
+  p[style="font-size: 16px; font-weight: 550;"]
+    strong Click on the button below to open a ticket
+    br
+    strong Opening a ticket you confirm the following:
+    br
+    strong
+      | You have read and understood the&nbsp;
+      = link_to "Terms and Conditions", terms_path, style: "color: #a0aec0;"
+      |  and the&nbsp;
+      = link_to "Privacy Policy", privacy_policy_path, style: "color: #a0aec0;"
+      br
+      |  of Outerspace and agree to be bound by them.
+      br
+      | You either have confirm that you will not try to break the rules of mining concept and have readed the rules of mining concept.
+  br
 
   div
-    = form.label :pool_id, style: "display: block"
-    = form.text_field :pool_id
-
-  div
-    = form.label :status, style: "display: block"
-    = form.number_field :status
-
-  div
-    = form.submit
+    = form.submit class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white", value:"Open a ticket"

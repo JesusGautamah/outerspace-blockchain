@@ -22,13 +22,8 @@ RSpec.describe "signatures/show", type: :view do
     assign(:signature, Signature.create!(
       signature: "S" * 64,
       contract: contract,
-      common_word: acceptable_word.word,
-      symbol_sequence: acceptable_symbol_sequence.seq,
-      number_sequence: acceptable_number_sequence.seq,
-      verify_sig: "Verify Sig",
-      block_hash: "Block Hash",
-      signature_hash: "Signature Hash",
-      time_ref: ticket.time_ref
+      user: user,
+      ticket: ticket,
     ))
   end
 
@@ -36,11 +31,5 @@ RSpec.describe "signatures/show", type: :view do
     render
     expect(rendered).to match(/Signature/)
     expect(rendered).to match(//)
-    expect(rendered).to match(/#{acceptable_word.word}/)
-    expect(rendered).to match(/#{acceptable_symbol_sequence.seq}/)
-    expect(rendered).to match(/#{acceptable_number_sequence.seq}/)
-    expect(rendered).to match(/Verify Sig/)
-    expect(rendered).to match(/Block Hash/)
-    expect(rendered).to match(/Signature Hash/)
   end
 end

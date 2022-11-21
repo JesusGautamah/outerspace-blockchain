@@ -11,7 +11,7 @@ RSpec.describe "tickets/show", type: :view do
     assign(:ticket, Ticket.create!(
       user: user,
       pool: pool,
-      status: 2,
+      status: :active,
       time_ref: "2021-09-01 15:00:00"
     ))
   end
@@ -20,6 +20,6 @@ RSpec.describe "tickets/show", type: :view do
     render
     expect(rendered).to match(//)
     expect(rendered).to match(//)
-    expect(rendered).to match(/2/)
+    expect(rendered).to match(/active/)
   end
 end

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq" if Rails.env.development?
   resources :signatures
   resources :tickets
   resources :pools
@@ -18,4 +21,10 @@ Rails.application.routes.draw do
   end
 
   root to: "application#home"
+  get "mining_profile", to: "application#mining_profile"
+  get "terms", to: "application#terms"
+  get "privacy_policy", to: "application#privacy_policy"
+
+  # load the api routes from api_routes.rb
+  draw :api
 end

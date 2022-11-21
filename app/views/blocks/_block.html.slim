@@ -1,8 +1,5 @@
 div id="#{dom_id block}"
   p
-    strong Nonce:
-    =< block.nonce
-  p
     strong Previous hash:
     =< block.previous_hash
   p
@@ -11,3 +8,6 @@ div id="#{dom_id block}"
   p
     strong Connections:
     =< block.connections
+  p
+    strong Transactions:
+    =< block.transactions.count

@@ -6,7 +6,7 @@ class Wallet < ApplicationRecord
   validates :user_id, presence: true
   validates :pr_key, presence: false
   validates :pv_key, presence: false
-  validates :balance, presence: true, numericality: { equal_to: 0.0 }
+  # validates :balance, presence: true, numericality: { equal_to: 0.0 }, on: :create
   validates :status, presence: true, inclusion: %w(active inactive)
 
   before_create :create_keys

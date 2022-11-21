@@ -20,39 +20,10 @@ RSpec.describe "signatures/edit", type: :view do
     Signature.create!(
       signature: "a" * 64,
       contract: contract,
-      common_word: acceptable_word.word,
-      symbol_sequence: acceptable_symbol_sequence.seq,
-      number_sequence: acceptable_number_sequence.seq,
-      verify_sig: "MyString",
-      block_hash: "MyString",
-      signature_hash: "MyString",
-      time_ref: ticket.time_ref
     )
   }
 
   before(:each) do
     assign(:signature, signature)
-  end
-
-  it "renders the edit signature form" do
-    render
-
-    assert_select "form[action=?][method=?]", signature_path(signature), "post" do
-      assert_select "input[name=?]", "signature[signature]"
-
-      assert_select "input[name=?]", "signature[contract_id]"
-
-      assert_select "input[name=?]", "signature[common_word]"
-
-      assert_select "input[name=?]", "signature[symbol_sequence]"
-
-      assert_select "input[name=?]", "signature[number_sequence]"
-
-      assert_select "input[name=?]", "signature[verify_sig]"
-
-      assert_select "input[name=?]", "signature[block_hash]"
-
-      assert_select "input[name=?]", "signature[signature_hash]"
-    end
   end
 end

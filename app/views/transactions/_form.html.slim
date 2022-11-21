@@ -5,26 +5,12 @@
       ul
         - @transaction.errors.each do |error|
           li = error.full_message
+  div.text-black
+    = form.label :receiver_key, style: "display: block", class: "text-white"
+    = form.text_field :receiver_key, class: "form-control"
+  div.text-black
+    = form.label :amount, style: "display: block", class: "text-white"
+    = form.number_field :amount, step: 0.01, min: 0, class: "form-control"
 
-  div
-    = form.label :sender_key, style: "display: block"
-    = form.text_field :sender_key
-
-  div
-    = form.label :receiver_key, style: "display: block"
-    = form.text_field :receiver_key
-
-  div
-    = form.label :signature_time, style: "display: block"
-    = form.time_field :signature_time
-
-  div
-    = form.label :confirmed, style: "display: block"
-    = form.check_box :confirmed
-
-  div
-    = form.label :master, style: "display: block"
-    = form.text_field :master
-
-  div
-    = form.submit
+  div[style="margin-top: 20px;"]
+    = form.submit class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"

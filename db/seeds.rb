@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+def seed_exec
+  create_first_chain
+  create_acceptable_word_lists
+  create_first_block
+end
+
+def dev_seed_exec
+  puts "Seeding development database"
+  puts "Creating first chain"
+  create_first_chain
+  puts "Creating acceptable word lists"
+  create_acceptable_word_lists
+  puts "Creating first block"
+  create_first_block
+  puts "Creating test users"
+  create_test_users
+end
+
 def create_first_chain
   Chain.create(
     name: ENV["FIRST_CHAIN_NAME"],
@@ -39,27 +57,38 @@ def create_acceptable_words
                  been call who oil its now
                  find long down day did get
                  come made may part]
+  words = []
   word_list.each do |word|
-    AcceptableWord.find_or_create_by(word: word)
+    words << AcceptableWord.new(word: word) # rubocop:disable Lint/UselessAssignment
   end
+
+  AcceptableWord.import words
 end
 
 def create_acceptable_symbol_sequences
   symbol_sequence_list = %w[!!! !@# !@#$ !@#$% !@#$%^ !@#$%^& !@#$%^&* !@#$%^&*(
                             !@#$%^&*( )@#$%^&*( )@#$%^&*() @#$%^&*() @#$%^&*()_
                             @#$%^&*()_ @#$%^&*()_+ #$%^&*()_+ #$%^&*()_+{
-                            #$%^&*()_+{ #$%^&*()_+{ }%^&*()_+{ }%^&*()_+{]
+                            #$%^&*()_+{ #$%^&*()_+{ }%^&*()_+{ }%^&*()_+{
+                            @#¨$@¨$$¨@(#$ @#¨$@¨$$¨@(#$ @#¨$@¨$$¨ @(#$¨@#¨$@¨$$¨@(#$)
+                            $#$¨@*#$¨$(@#) $@$(*#&$) $@#$&)@#$() @&(*@#&$$]
+  symbols = []
   symbol_sequence_list.each do |symbol_sequence|
-    AcceptableSymbolSequence.find_or_create_by(seq: symbol_sequence)
+    symbols << AcceptableSymbolSequence.new(seq: symbol_sequence) # rubocop:disable Lint/UselessAssignment
   end
+
+  AcceptableSymbolSequence.import symbols
 end
 
 def create_acceptable_number_sequences
   number_sequence_list = (0..9999).map { |n| format("%04d", n) }
 
+  numbers = []
   number_sequence_list.each do |number_sequence|
-    AcceptableNumberSequence.find_or_create_by(seq: number_sequence)
+    numbers << AcceptableNumberSequence.new(seq: number_sequence) # rubocop:disable Lint/UselessAssignment
   end
+
+  AcceptableNumberSequence.import numbers
 end
 
 
@@ -71,13 +100,35 @@ def create_first_block
     nonce: 0,
     connections: 0,
     contracts_count: 0,
-    contracts_limit: ENV["FIRST_CHAIN_CONTRACTS_LIMIT"].to_i,
+    contracts_limit: ENV["CONTRACTS_LIMIT"].to_i,
     # timestamp: Time.now
   )
 
   puts "First block created"
 end
 
-create_first_chain
-create_acceptable_word_lists
-create_first_block
+def create_test_users
+  if User.find_by(email: "lorem@ipsum.com", username: "lorem")
+    puts "Test user already exists"
+  else
+    User.create(
+      email: "lorem@ipsum.com", username: "lorem", password: "password", password_confirmation: "password"
+    )
+    puts "Test user created"
+  end
+
+  if User.find_by(email: "lorem_sec@ipsum.com", username: "lorem_sec")
+    puts "Test user already exists"
+  else
+    User.create(
+      email: "lorem_sec@ipsum.com", username: "lorem_sec", password: "password", password_confirmation: "password"
+    )
+    puts "Test user created"
+  end
+end
+
+if Rails.env.development?
+  dev_seed_exec
+else
+  seed_exec
+end

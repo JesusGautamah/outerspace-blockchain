@@ -1,11 +1,16 @@
-p style="color: green" = notice
+.text-white.text-center
 
-h1 Tickets
 
-#tickets
-  - @tickets.each do |ticket|
-    == render ticket
-    p
-      = link_to "Show this ticket", ticket
+  h1 Tickets
 
-= link_to "New ticket", new_ticket_path
+  #tickets
+    - @tickets.each do |ticket|
+      == render ticket if ticket.user == current_user
+      br
+      p
+        = link_to "Show this ticket", ticket, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+      br
+  br
+  = link_to "New ticket", new_ticket_path, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"
+  br
+  br

@@ -1,0 +1,59 @@
+.text-white.text-center
+  p[style="font-size: 20px;font-weight: 550;"]
+    / outersapce logo rounded image
+    = image_tag("logo.png", class: "rounded-full h-20 w-20", style: "margin: 0 auto;")
+    strong
+      = "#{current_user.username}'s"
+  h1 Mining profile
+  br
+  .flex
+    .w-1/2.text-center.mr-4.mt-4.border-2.border-purple-500.rounded.p-4.bg-purple-500
+      p[style="font-size: 20px; font-weight: 550;"]
+        strong Wallet
+      p[style="font-size: 16px;"]
+        strong
+          = "Balance: #{current_user.wallet.balance}"
+      p[style="font-size: 16px;"]
+        strong
+          = "Address: #{current_user.wallet.pr_key}"
+    .w-1/2.text-center.mr-4.mt-4.border-2.border-purple-500.rounded.p-4.bg-purple-500
+      p[style="font-size: 20px;font-weight: 550;"]
+        strong API
+      p[style="font-size: 16px;"]
+        strong Key:
+        = current_user.api_key
+      p[style="font-size: 16px;"]
+        strong Secret:
+        = current_user.api_secret
+      p[style="font-size: 16px;"]
+        strong
+          = "Has a ticket? #{@ticket.present?}"
+      - unless @ticket.present?
+        br
+        = link_to "Get a ticket", new_ticket_path, class: "px-4 py-2 rounded bg-gray-800 hover_bg-black text-white"
+        br
+  br
+  .flex
+    .w-1/3.text-center.mr-4.mt-4.border-2.border-purple-500.rounded.p-4.bg-purple-500
+      p[style="font-size: 20px;font-weight: 550;"]
+        strong Acceptable Words
+        - @words.each do |word|
+          p[style="font-size: 16px;"]
+            strong
+              = word
+    .w-1/3.text-center.mr-4.mt-4.border-2.border-purple-500.rounded.p-4.bg-purple-500
+      p[style="font-size: 20px;font-weight: 550;"]
+        strong Acceptable Number Sequences
+        - @numbers.each do |sequence|
+          p[style="font-size: 16px;"]
+            strong
+              = sequence
+    .w-1/3.text-center.mr-4.mt-4.border-2.border-purple-500.rounded.p-4.bg-purple-500
+      p[style="font-size: 20px;font-weight: 550;"]
+        strong Acceptable Symbol Sequences
+        - @symbols.each do |sequence|
+          p[style="font-size: 16px;"]
+            strong
+              = sequence
+  br
+  br

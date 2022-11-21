@@ -1,10 +1,24 @@
 div id="#{dom_id transaction}"
   p
-    strong Sender key:
-    =< transaction.sender_key
+    strong Sended by:
+    =< transaction.sender
   p
-    strong Receiver key:
-    =< transaction.receiver_key
-  p
-    strong Signature time:
-    =< transaction.signature_time
+    strong Receiver By:
+    =< transaction.receiver
+  / only show the information below if the Show page is being rendered
+  - if action_name == "show"
+    p
+      strong Amount:
+      =< transaction.amount
+    p
+      strong Status:
+      =< transaction.status
+    p
+      strong Block:
+      =< transaction.block.id
+    p
+      strong Created at:
+      =< transaction.created_at
+    p
+      strong Updated at:
+      =< transaction.updated_at

@@ -21,24 +21,14 @@ RSpec.describe "signatures/index", type: :view do
       Signature.create!(
         signature: "a" * 64,
         contract: contract,
-        common_word: acceptable_word.word,
-        symbol_sequence: acceptable_symbol_sequence.seq,
-        number_sequence: acceptable_number_sequence.seq,
-        verify_sig: "Verify Sig",
-        block_hash: "Block Hash",
-        signature_hash: "Hashed",
-        time_ref: ticket.time_ref
+        user: user,
+        ticket: ticket,
       ),
       Signature.create!(
         signature: "b" * 64,
         contract: contract,
-        common_word: acceptable_word.word,
-        symbol_sequence: acceptable_symbol_sequence.seq,
-        number_sequence: acceptable_number_sequence.seq,
-        verify_sig: "Verify Sig",
-        block_hash: "Block Hash",
-        signature_hash: "Hashed",
-        time_ref: ticket.time_ref
+        user: user,
+        ticket: ticket,
       )
     ])
   end
@@ -48,11 +38,5 @@ RSpec.describe "signatures/index", type: :view do
     cell_selector = Rails::VERSION::STRING >= "7" ? "div>p" : "tr>td"
     assert_select cell_selector, text: Regexp.new("a" * 64), count: 1
     assert_select cell_selector, text: Regexp.new(contract.id.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(acceptable_word.word), count: 2
-    assert_select cell_selector, text: Regexp.new(acceptable_symbol_sequence.seq), count: 2
-    assert_select cell_selector, text: Regexp.new(acceptable_number_sequence.seq), count: 2
-    assert_select cell_selector, text: Regexp.new("Verify Sig".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Block Hash".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Hashed".to_s), count: 2
   end
 end

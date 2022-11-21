@@ -29,106 +29,18 @@ RSpec.describe "/pools", type: :request do
   }
 
   describe "GET /index" do
-    it "renders a successful response" do
+    it "renders a error response" do
       Pool.create! valid_attributes
       get pools_url
-      expect(response).to be_successful
+      expect(response).to_not be_successful
     end
   end
 
   describe "GET /show" do
-    it "renders a successful response" do
+    it "renders a error response" do
       pool = Pool.create! valid_attributes
       get pool_url(pool)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_pool_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      pool = Pool.create! valid_attributes
-      get edit_pool_url(pool)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Pool" do
-        expect {
-          post pools_url, params: { pool: valid_attributes }
-        }.to change(Pool, :count).by(1)
-      end
-
-      it "redirects to the created pool" do
-        post pools_url, params: { pool: valid_attributes }
-        expect(response).to redirect_to(pool_url(Pool.last))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Pool" do
-        expect {
-          post pools_url, params: { pool: invalid_attributes }
-        }.to change(Pool, :count).by(0)
-      end
-
-
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post pools_url, params: { pool: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-  end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        { block_id: block.id, users_count: 2, signatures_count: 3, amount: 9.5, stage: 5 }
-      }
-
-      it "updates the requested pool" do
-        pool = Pool.create! valid_attributes
-        patch pool_url(pool), params: { pool: new_attributes }
-        pool.reload
-      end
-
-      it "redirects to the pool" do
-        pool = Pool.create! valid_attributes
-        patch pool_url(pool), params: { pool: new_attributes }
-        pool.reload
-        expect(response).to redirect_to(pool_url(pool))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        pool = Pool.create! valid_attributes
-        patch pool_url(pool), params: { pool: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested pool" do
-      pool = Pool.create! valid_attributes
-      expect {
-        delete pool_url(pool)
-      }.to change(Pool, :count).by(-1)
-    end
-
-    it "redirects to the pools list" do
-      pool = Pool.create! valid_attributes
-      delete pool_url(pool)
-      expect(response).to redirect_to(pools_url)
+      expect(response).to_not be_successful
     end
   end
 end

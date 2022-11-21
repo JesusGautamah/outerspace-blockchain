@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    CreateWalletWorker.perform_async(resource.id)
   end
 
   # GET /resource/edit
