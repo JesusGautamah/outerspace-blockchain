@@ -12,6 +12,13 @@
 
 #### Rspec is used to test the blockchain.
 
+
+## Build Version: 0.1.6
+### Last Update:
+#### Added Docker Compose Installation Recognition and Refactored some tests
+#### Added lib tasks helper to created rake tasks for blockchain
+
+
 ## System dependencies
     1. Docker
     2. Postgresql
