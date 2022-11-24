@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Osbc
-  VERSION = "0.1.3"
+  VERSION = "0.1.6"
   class Osbc
   end
 

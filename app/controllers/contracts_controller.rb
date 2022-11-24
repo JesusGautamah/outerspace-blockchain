@@ -17,9 +17,4 @@ class ContractsController < ApplicationController
     def set_contract
       @contract = Contract.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
-    def contract_params
-      params.require(:contract).permit(:first_sig, :second_sig, :third_sig, :fourth_sig, :status, :transaction_id)
-    end
 end

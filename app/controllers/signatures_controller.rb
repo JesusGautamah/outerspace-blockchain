@@ -17,9 +17,4 @@ class SignaturesController < ApplicationController
     def set_signature
       @signature = Signature.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
-    def signature_params
-      params.require(:signature).permit(:signature, :time_ref, :contract_id, :common_word, :symbol_sequence, :number_sequence, :verify_sig, :block_hash, :signature_hash)
-    end
 end
