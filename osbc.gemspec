@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/outerspace-coding/outerspace-blockchain"
+  spec.metadata["source_code_uri"] = "https://github.com/JesusGautamah/outerspace-blockchain"
   spec.metadata["changelog_uri"] = "https://github.com/outerspace-coding/outerspace-blockchain/blob/main/CHANGELOG.md"
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject do |f|

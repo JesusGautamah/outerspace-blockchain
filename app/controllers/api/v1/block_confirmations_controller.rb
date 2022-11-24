@@ -11,15 +11,15 @@ class Api::V1::BlockConfirmationsController < ActionController::API
     assign_contract
   end
 
-  def transactions_to_mine
-    return unauthorized_response unless find_user_by_header
-    ticket = Ticket.find_by(user_id: @user.id)
-    return ticket_not_found_response unless ticket.present?
-    transactions_ids = ticket.transaction_id_list
-    transactions = Transaction.where(id: transactions_ids)
-    transactions_json = transactions.to_json
-    render json: transactions_json, status: :ok
-  end
+  # def transactions_to_mine
+  #   return unauthorized_response unless find_user_by_header
+  #   ticket = Ticket.find_by(user_id: @user.id)
+  #   return ticket_not_found_response unless ticket.present?
+  #   transactions_ids = ticket.transaction_id_list
+  #   transactions = Transaction.where(id: transactions_ids)
+  #   transactions_json = transactions.to_json
+  #   render json: transactions_json, status: :ok
+  # end
 
   def info_to_mine
     return unauthorized_response unless find_user_by_header
@@ -31,11 +31,11 @@ class Api::V1::BlockConfirmationsController < ActionController::API
 
   private
     def find_user_by_header
-      return unless request.headers["X-Api-Key"].present?
-      api_key = request.headers["X-Api-Key"]
+      return unless request.headers["X-API-KEY"].present?
+      api_key = request.headers["X-API-KEY"]
       @user = User.find_by(api_key: api_key)
       return unless @user.present?
-      @user.api_secret == request.headers["X-Api-Secret"]
+      @user.api_secret == request.headers["X-API-SECRET"]
     end
 
     def unauthorized_response

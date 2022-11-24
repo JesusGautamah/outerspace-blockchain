@@ -7,6 +7,7 @@ SimpleCov.start "rails" do
   add_group "Workers", "app/workers"
   add_group "OSBC", "lib/osbc"
   add_group "Outerspace", "lib/outerspace"
+  add_group "Task Helpers", "lib/tasks/task_helpers"
   add_filter "app/channels"
   add_filter "app/jobs"
 end

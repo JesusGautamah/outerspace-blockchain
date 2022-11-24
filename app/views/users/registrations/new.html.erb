@@ -5,7 +5,7 @@
   <%= render "users/shared/error_messages", resource: resource %>
   <div class="field text-black">
     <%= f.label :username, class: "text-white" %><br />
-    <em class="text-white">(10 characters minimum)</em>
+    <em class="text-white">(10 characters minimum)</em><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username",class: "px-4 py-2 rounded text-black border-2 border-purple-300 focus_border-purple-900" %>
   </div>
 
