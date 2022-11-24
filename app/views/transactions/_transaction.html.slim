@@ -3,9 +3,8 @@ div id="#{dom_id transaction}"
     strong Sended by:
     =< transaction.sender
   p
-    strong Receiver By:
+    strong Receiver By: 
     =< transaction.receiver
-  / only show the information below if the Show page is being rendered
   - if action_name == "show"
     p
       strong Amount:
