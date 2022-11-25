@@ -12,7 +12,6 @@
 
 #### Rspec is used to test the blockchain.
 
-
 ## Build Version: 0.1.6
 ### Last Update:
 #### Added Docker Compose Installation Recognition and Refactored some tests
@@ -26,10 +25,7 @@
 ###### Add more documentation
 ###### Add NFT Generator
 ###### Increase the environment variables for autoconfig
-###### Add features of autogeneration of blockchain for better configuration
-
-
-
+###### Add features to autogeneration of blockchain for better configuration
 
 ## System dependencies
     1. Docker
@@ -195,7 +191,7 @@ The timestamps of the signatures will be usefull to version the block, checking 
 
 **The miners will be rewarded with the block reward distributed by the number of signatures**
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/outerspace-coding/outerspace-blockchain
+Bug reports and pull requests are welcome on GitHub at https://github.com/JesusGautamah/outerspace-blockchain
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
