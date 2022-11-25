@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CreateTicketWorker < ApplicationWorker
+  include Sidekiq::Worker
   sidekiq_options retry: false
 
   def perform(user_id, pool_id, time_ref)
