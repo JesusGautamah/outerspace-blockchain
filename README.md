@@ -17,6 +17,18 @@
 ### Last Update:
 #### Added Docker Compose Installation Recognition and Refactored some tests
 #### Added lib tasks helper to created rake tasks for blockchain
+##### TODO
+###### Add more tests
+###### Add more features
+###### Include pagination
+###### Create Queries Folder
+###### Test in kubernetes
+###### Add more documentation
+###### Add NFT Generator
+###### Increase the environment variables for autoconfig
+###### Add features of autogeneration of blockchain for better configuration
+
+
 
 
 ## System dependencies
@@ -166,18 +178,16 @@ The mine will depend of the contract signatures that will be formed by the serve
 2. The server will send a message to the user to start mining if the POOL is open
 3. The users will load the RANDOM WORD LIST provided by the server API
 4. The user have to use 1 common word, 1 symbol sequence and 1 number sequence, randomize the characters
-5. Transform the chartacters in a SHA256 hash
-6. Transform the block info in before ticket opened in a SHA256 hash
-5. Transform (Chars SHA256 hash + block info hash) in a SHA256 hash
-6. If the hash is valid, the user will send the hash to the server
-7. The server will check if the hash is valid
-8. If the hash is valid, check if the same transactions have the same block state confirmation
-9. If this transactions was not confirmed at this point at block history the server will add the user signature to the transaction contract
+5. Transform the shuffled chartacters in a SHA256 hash
+6. The user will send the hash to the server
+7. The server will validate the hash and will send a message to the user if the hash is valid
+8. If the hash is valid, check if the same transactions have the same block state confirmation, if yes, the user will have to mine again in a new state of the transactions timeline
+9. If this transactions was not confirmed at this point at block history the server will add the user signature to the transactions contracts included in the users ticket timeline range
 10. The block only can be hashed when the minimum number of contracts valids with minimum number of signatures is reached
 11. The server will use the signature timeline to determine what transactions will be added to the block
 12. The server will calculate the master hash after confirm all valid contracts signatures
-13. The server will add the block to the blockchain and create a new one with last block unconfirmed transactions but completely unsigned
-13. The server will start a open/closed pool cycle
+13. Assignmaster hash to the block, create new block and add to the blockchain with previous block hash
+13. The server will start a open/closed pool cycle ( pool is open only if has a minimun of transactions to mine )
 14. The server will send a message to the user to start mining when the POOL is open and user has a ticket
 <p>
 The timestamps of the signatures will be usefull to version the block, checking it as a timeline

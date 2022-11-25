@@ -1,53 +1,22 @@
 # frozen_string_literal: true
 
-class Api::V1::BlockConfirmationsController < ActionController::API
+class Api::V1::BlockConfirmationsController < Api::V1::ApplicationController
+  before_action :unauthorized?
+  before_action :ticket_founded?, only: [:confirm_block]
+  before_action :confirmation_hash_founded?, only: [:confirm_block]
+
   def confirm_block
-    return unauthorized_response unless find_user_by_header
-    @ticket = Ticket.find_by(user_id: @user.id, status: :active)
-    return ticket_not_found_response unless @ticket.present?
-    confirmation_hash = block_confirmation_params[:user_confirmation_hash]
-    return confirmation_hash_not_found_response unless confirmation_hash.present?
-    return not_valid_confirmation_hash_response unless @ticket.user_acceptable_hash == confirmation_hash
+    return not_valid_confirmation_hash_response unless hash_confirmed?
     assign_contract
   end
 
-  # def transactions_to_mine
-  #   return unauthorized_response unless find_user_by_header
-  #   ticket = Ticket.find_by(user_id: @user.id)
-  #   return ticket_not_found_response unless ticket.present?
-  #   transactions_ids = ticket.transaction_id_list
-  #   transactions = Transaction.where(id: transactions_ids)
-  #   transactions_json = transactions.to_json
-  #   render json: transactions_json, status: :ok
-  # end
-
   def info_to_mine
-    return unauthorized_response unless find_user_by_header
-    words = @user.acceptable_words
-    number_sequences = @user.acceptable_number_sequences
-    symbol_sequences = @user.acceptable_symbol_sequences
     render json: { words: words, number_sequences: number_sequences, symbol_sequences: symbol_sequences }, status: :ok
   end
 
   private
-    def find_user_by_header
-      return unless request.headers["X-API-KEY"].present?
-      api_key = request.headers["X-API-KEY"]
-      @user = User.find_by(api_key: api_key)
-      return unless @user.present?
-      @user.api_secret == request.headers["X-API-SECRET"]
-    end
-
-    def unauthorized_response
-      render json: { error: "Unauthorized" }, status: :unauthorized
-    end
-
-    def ticket_not_found_response
-      render json: { error: "Ticket not found" }, status: :not_found
-    end
-
-    def confirmation_hash_not_found_response
-      render json: { error: "Confirmation hash not found" }, status: :not_found
+    def hash_confirmed?
+      @ticket.user_acceptable_hash == confirmation_hash
     end
 
     def assign_contract
@@ -57,6 +26,18 @@ class Api::V1::BlockConfirmationsController < ActionController::API
 
     def not_valid_confirmation_hash_response
       render json: { error: "Not valid confirmation hash" }, status: :not_found
+    end
+
+    def words
+      @words = @user.acceptable_words
+    end
+
+    def number_sequences
+      @number_sequences = @user.acceptable_number_sequences
+    end
+
+    def symbol_sequences
+      @symbol_sequences = @user.acceptable_symbol_sequences
     end
 
     def block_confirmation_params
