@@ -17,6 +17,18 @@
 ### Last Update:
 #### Added Docker Compose Installation Recognition and Refactored some tests
 #### Added lib tasks helper to created rake tasks for blockchain
+##### TODO
+###### Add more tests
+###### Add more features
+###### Include pagination
+###### Create Queries Folder
+###### Test in kubernetes
+###### Add more documentation
+###### Add NFT Generator
+###### Increase the environment variables for autoconfig
+###### Add features of autogeneration of blockchain for better configuration
+
+
 
 
 ## System dependencies
