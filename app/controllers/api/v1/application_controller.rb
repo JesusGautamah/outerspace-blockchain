@@ -11,6 +11,8 @@ class Api::V1::ApplicationController < ActionController::API
   end
 
   private
+    attr_accessor :user
+
     def find_user_by_header
       return unless request.headers["X-API-KEY"].present?
       api_key = request.headers["X-API-KEY"]
@@ -37,5 +39,29 @@ class Api::V1::ApplicationController < ActionController::API
 
     def unauthorized_response
       render json: { error: "Unauthorized" }, status: :unauthorized
+    end
+
+    def current_block
+      @current_block = Block.find_by(master_hash: nil)
+    end
+
+    def current_pool
+      @current_pool = Pool.find_by(block_id: current_block.id)
+    end
+
+    def ticket
+      @ticket = Ticket.find_by(user_id: user.id, status: :active)
+    end
+
+    def block_transactions
+      @block_transactions = Transaction.where(block_id: current_block.id)
+    end
+
+    def block_transactions_empty?
+      return no_transactions_response unless block_transactions.present?
+    end
+
+    def no_transactions_response
+      render json: { error: "No transactions in the block" }, status: :not_found
     end
 end
