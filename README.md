@@ -12,10 +12,11 @@
 
 #### Rspec is used to test the blockchain.
 
-## Build Version: 0.1.6
+## Build Version: 0.1.7
 ### Last Update:
-#### Added Docker Compose Installation Recognition and Refactored some tests
-#### Added lib tasks helper to created rake tasks for blockchain
+#### Added Open Ticket Api Methods
+#### Refactored some methods and tests
+#### Removed coverage folder github repo
 ##### TODO
 ###### Add more tests
 ###### Add more features
@@ -43,6 +44,15 @@
     - [Redis](#redis) https://redis.io/download
     - [Postgres](#postgres) https://www.postgresql.org/download/
     - [Rails](#rails) https://guides.rubyonrails.org/getting_started.html
+
+### Install it from RubyGems (Ruby 3.0.3)
+```bash
+gem install osbc
+```
+## Run to generate new project
+```bash
+osbc PATH
+```
 
 ### Compile OSBC from source
 ========================

@@ -36,3 +36,6 @@
 /data
 /.vscode
 /.vscode/*
+/coverage
+/coverage/*
+osbc-*.gem
