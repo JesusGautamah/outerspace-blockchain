@@ -12,11 +12,10 @@
 
 #### Rspec is used to test the blockchain.
 
-## Build Version: 0.1.7
+## Build Version: 0.1.9
 ### Last Update:
-#### Added Open Ticket Api Methods
-#### Refactored some methods and tests
-#### Removed coverage folder github repo
+#### Edited Gemspec
+#### Edited Readme
 ##### TODO
 ###### Add more tests
 ###### Add more features
