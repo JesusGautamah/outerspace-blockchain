@@ -15,7 +15,7 @@
 ## Build Version: 0.1.7
 ### Last Update:
 #### Added Open Ticket Api Methods
-#### Reafactored some methods and tests
+#### Refactored some methods and tests
 #### Removed coverage folder github repo
 ##### TODO
 ###### Add more tests
@@ -44,6 +44,15 @@
     - [Redis](#redis) https://redis.io/download
     - [Postgres](#postgres) https://www.postgresql.org/download/
     - [Rails](#rails) https://guides.rubyonrails.org/getting_started.html
+
+### Install it from RubyGems (Ruby 3.0.3)
+```bash
+gem install osbc
+```
+## Run to generate new project
+```bash
+osbc PATH
+```
 
 ### Compile OSBC from source
 ========================
