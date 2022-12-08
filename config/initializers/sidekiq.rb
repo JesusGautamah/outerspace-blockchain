@@ -1,1 +1,1 @@
-Sidekiq.strict_args!
+# Sidekiq.strict_args!
