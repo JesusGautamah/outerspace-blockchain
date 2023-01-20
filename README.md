@@ -1,4 +1,4 @@
-# <img src="https://outerspace-coding.herokuapp.com/assets/pq-70825bc795d25668cf4f11b06b990ed0d1c2cae887acce0625e5059226a7946a.png" width="25" height="25"> Outerspace Blockchain
+# <img src="https://osbc-blockchain.herokuapp.com/assets/logo-70825bc795d25668cf4f11b06b990ed0d1c2cae887acce0625e5059226a7946a.png" width="25" height="25"> Outerspace Blockchain
 <!-- Outerspace Logo -->
 ### A Ruby implementation of web blockchain framework.
 #### Developed using TDD (Test Driven Development).
@@ -12,11 +12,10 @@
 
 #### Rspec is used to test the blockchain.
 
-## Build Version: 0.1.7
+## Build Version: 0.1.9
 ### Last Update:
-#### Added Open Ticket Api Methods
-#### Refactored some methods and tests
-#### Removed coverage folder github repo
+#### Edited Gemspec
+#### Edited Readme
 ##### TODO
 ###### Add more tests
 ###### Add more features

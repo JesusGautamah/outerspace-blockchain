@@ -4,6 +4,7 @@ def seed_exec
   create_first_chain
   create_acceptable_word_lists
   create_first_block
+  create_first_user
 end
 
 def dev_seed_exec
@@ -19,16 +20,13 @@ def dev_seed_exec
 end
 
 def create_first_chain
-  Chain.create(
+  chain = Chain.find_or_create_by(
     name: ENV["FIRST_CHAIN_NAME"],
     maintainer: ENV["FIRST_CHAIN_MAINTAINER"],
     chain_version: "0.0.1",
     description: "This is a blockchain project generated with outerspace-blockchain."
   )
-
-  puts "Chain created"
-  puts "Chain name: #{ENV["FIRST_CHAIN_NAME"]}"
-  puts "Chain maintainer: #{ENV["FIRST_CHAIN_MAINTAINER"]}"
+  chain.present? ? puts("First chain OK") : puts("Chain seed error")
 end
 
 def create_acceptable_word_lists
@@ -36,7 +34,7 @@ def create_acceptable_word_lists
   create_acceptable_symbol_sequences
   create_acceptable_number_sequences
 end
-
+ 
 def create_acceptable_words
   word_list = %w[the of and to a in
                  is you that it he
@@ -93,7 +91,7 @@ end
 
 
 def create_first_block
-  Block.create(
+  block = Block.find_or_create_by(
     chain: Chain.first,
     previous_hash: "0000000000000000000000000000000000000000000000000000000000000000",
     block_data: "This is the first block of the blockchain.",
@@ -101,10 +99,8 @@ def create_first_block
     connections: 0,
     contracts_count: 0,
     contracts_limit: ENV["CONTRACTS_LIMIT"].to_i,
-    # timestamp: Time.now
   )
-
-  puts "First block created"
+  block.present? ? puts("First block OK") : puts("Block seed error")
 end
 
 def create_test_users
@@ -124,6 +120,17 @@ def create_test_users
       email: "lorem_sec@ipsum.com", username: "lorem_sec", password: "password", password_confirmation: "password"
     )
     puts "Test user created"
+  end
+end
+
+def create_first_user
+  if User.find_by(email: ENV["FIRST_USER_EMAIL"], username: ENV["FIRST_USER_USERNAME"])
+    puts "First user already exists"
+  else
+    User.create(
+      email: ENV["FIRST_USER_EMAIL"], username: ENV["FIRST_USER_USERNAME"], password: ENV["FIRST_USER_PASSWORD"], password_confirmation: ENV["FIRST_USER_PASSWORD"]
+    )
+    puts "First user created"
   end
 end
 
