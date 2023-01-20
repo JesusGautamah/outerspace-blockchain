@@ -3,8 +3,8 @@
 ### A Ruby implementation of web blockchain framework.
 #### Developed using TDD (Test Driven Development).
 #### Github Actions CI/CD pipeline.
-#### Chrome Selenium tests are used to test the blockchain in a browser and its interaction with the blockchain.
-#### Chrome Selenium are included in the docker compose without any additional setup.
+#### Firestore
+
 #### Simplecov is used to test code coverage.
 
 #### Rails Engine is used to create the blockchain.
@@ -12,20 +12,7 @@
 
 #### Rspec is used to test the blockchain.
 
-## Build Version: 0.1.9
-### Last Update:
-#### Edited Gemspec
-#### Edited Readme
-##### TODO
-###### Add more tests
-###### Add more features
-###### Include pagination
-###### Create Queries Folder
-###### Test in kubernetes
-###### Add more documentation
-###### Add NFT Generator
-###### Increase the environment variables for autoconfig
-###### Add features to autogeneration of blockchain for better configuration
+## Build Version: 0.2.0
 
 ## System dependencies
     1. Docker
