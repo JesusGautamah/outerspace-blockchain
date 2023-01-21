@@ -24,7 +24,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-        bundler-cache: false
+        bundler-cache: true
     - name: Bundle Install to install Gems
       run: bundle install
     - name: Update APT and install Docker Requirements
