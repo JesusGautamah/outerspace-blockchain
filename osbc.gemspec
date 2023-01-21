@@ -9,15 +9,8 @@ Gem::Specification.new do |spec|
   spec.email = ["lima.jesuscc@gmail.com"]
 
   spec.summary = "Outerspace Web Blockchain Framework implementation in Ruby"
-  spec.description = "Outerspace Web Blockchain Framework implementation in Ruby using Rails and Docker.
-
-  Please visit https://github.com/JesusGautamah/outerspace-blockchain for more information.
-
-  If you like the project or ideas, please consider donating to the project or star it on GitHub.
-
-  It will be constructed for a long time and will be improved with the help of the community.
-
-  Thank you for your support."
+  spec.description = "Outerspace Web Blockchain Framework implementation in Ruby using Rails, Docker and Firestore, instable and under development.
+  Please visit https://github.com/JesusGautamah/outerspace-blockchain for more information."
   spec.homepage = "https://github.com/JesusGautamah/outerspace-blockchain"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.3"

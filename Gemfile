@@ -66,6 +66,9 @@ gem "rails-controller-testing", "~> 1.0"
 # Active Record Import
 gem "activerecord-import"
 
+# Google Firestore
+gem "google-cloud-firestore", "~> 2.6"
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

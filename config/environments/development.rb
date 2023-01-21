@@ -4,6 +4,8 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.hosts << "lvh.me"
+  config.hosts << "outerspacecoding.com"
+  config.hosts << "osbc.outerspacecoding.com"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

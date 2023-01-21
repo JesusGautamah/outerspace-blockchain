@@ -39,3 +39,6 @@
 /coverage
 /coverage/*
 osbc-*.gem
+.env
+/.env
+/.env.*
