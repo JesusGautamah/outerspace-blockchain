@@ -1,10 +1,13 @@
 # <img src="https://osbc-blockchain.herokuapp.com/assets/logo-70825bc795d25668cf4f11b06b990ed0d1c2cae887acce0625e5059226a7946a.png" width="25" height="25"> Outerspace Blockchain
 <!-- Outerspace Logo -->
+
+### This application is instable and under development.
+### Please, use it with caution and at your own risk.
 ### A Ruby implementation of web blockchain framework.
 #### Developed using TDD (Test Driven Development).
 #### Github Actions CI/CD pipeline.
-#### Chrome Selenium tests are used to test the blockchain in a browser and its interaction with the blockchain.
-#### Chrome Selenium are included in the docker compose without any additional setup.
+#### Firestore is used to store the blockchain.
+
 #### Simplecov is used to test code coverage.
 
 #### Rails Engine is used to create the blockchain.
@@ -12,20 +15,29 @@
 
 #### Rspec is used to test the blockchain.
 
-## Build Version: 0.1.9
-### Last Update:
-#### Edited Gemspec
-#### Edited Readme
-##### TODO
-###### Add more tests
-###### Add more features
-###### Include pagination
-###### Create Queries Folder
-###### Test in kubernetes
-###### Add more documentation
-###### Add NFT Generator
-###### Increase the environment variables for autoconfig
-###### Add features to autogeneration of blockchain for better configuration
+## Build Version: 0.2.0
+
+## Todo
+* [ ] Firebase integration (this will be use instead of Redis management)
+* [ ] Add and correct tests
+* [ ] Add and correct documentation
+* [ ] Add user verification methods
+* [ ] Better mobile layout
+* [ ] Create the price visualization and the price history api
+* [ ] Add more blockchain features
+* [ ] Add more blockchain tests
+* [ ] Add more blockchain documentation
+* [ ] Add nft's classification class
+* [ ] Add nft's modularization class
+* [ ] Add nft's generator class
+* [ ] Benchmark blockchain and mining
+* [ ] Create a blockchain explorer
+* [ ] Create a default blockchain wallet android app generator with flutter
+* [ ] Create generators that will work with rails and flutter at the same time
+* [ ] Create the user marketplace
+* [ ] Integrate Blockchain Api in other projects
+
+Kubernets integration will be worked on in the future.
 
 ## System dependencies
     1. Docker
@@ -52,7 +64,6 @@ gem install osbc
 ```bash
 osbc PATH
 ```
-
 ### Compile OSBC from source
 ========================
 <!-- Compile OSBC from source -->
