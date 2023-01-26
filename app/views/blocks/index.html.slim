@@ -5,7 +5,9 @@
   
   #blocks
     - @blocks.each do |block|
-      == render block
+      p[style="font-size: 20px; font-weight: 550;"]
+        strong
+          = "Block #{block.id}"
       br
       p
         = link_to "Show this block", block, class: "px-4 py-2 rounded bg-purple-500 hover_bg-purple-700 text-white"

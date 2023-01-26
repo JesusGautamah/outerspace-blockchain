@@ -40,11 +40,11 @@
       <div class="w-1/2 px-1 text-center">
           <a href="blocks" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space.jpg" %>) center; background-size: cover;">
               <div class="h-24"></div>
-              <div class="text-lg font-bold text-black leading-tight glitch" data-glitch="Blockchain">Blockchain</div>
+              <div class="text-lg font-bold text-white leading-tight" data-glitch="Blockchain">Blockchain</div>
           </a>
           <a href="transactions" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_two.jpg" %>) center; background-size: cover;">
               <div class="h-32"></div>
-              <div class="text-lg font-bold text-white leading-tight glitch" data-glitch="Transactions">Transactions</div>
+              <div class="text-lg font-bold text-white leading-tight" data-glitch="Transactions">Transactions</div>
           </a>
       </div>
 
@@ -52,22 +52,60 @@
         <div class="w-1/2 px-1 text-center">
           <a href="wallets" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_th.jpg" %>) center; background-size: cover;">
               <div class="h-32"></div>
-              <h3 class="text-lg font-bold text-white leading-tight glitch" data-glitch="Wallet">Wallet</h3>
+              <h3 class="text-lg font-bold text-white leading-tight" data-glitch="Wallet">Wallet</h3>
           </a>
           <a href="mining_profile" class="block mb-2 p-5 rounded overflow-hidden text-center transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_four.jpg" %>) center; background-size: cover;">
               <div class="h-24"></div>
-              <div class="text-lg font-bold text-white leading-tight glitch" data-glitch="Mining Profile">Mining Profile</div>
+              <div class="text-lg font-bold text-white leading-tight" data-glitch="Mining Profile">Mining Profile</div>
           </a>
       </div>
       <% else %>
         <div class="w-1/2 px-1 text-center">
             <a href="/users/sign_in" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_th.jpg" %>) center; background-size: cover;">
                 <div class="h-32"></div>
-                <h3 class="text-lg font-bold text-white leading-tight glitch" data-glitch="Login">Login</h3>
+                <h3 class="text-lg font-bold text-white leading-tight" data-glitch="Login">Login</h3>
             </a>
             <a href="/users/sign_up" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_four.jpg" %>) center; background-size: cover;">
                 <div class="h-24"></div>
-                <h3 class="text-lg font-bold text-white leading-tight glitch" data-glitch="Sign Up">Sign Up</h3>
+                <h3 class="text-lg font-bold text-white leading-tight" data-glitch="Sign Up">Sign Up</h3>
+            </a>
+        </div>
+      <% end %>
+  </div>
+
+    <div class="flex -mx-1 mb-5 sm_hidden">
+
+      <div class="w-1/2 px-1 text-center">
+          <a href="/" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space.jpg" %>) center; background-size: cover;">
+              <div class="h-24"></div>
+              <div class="text-lg font-bold text-white leading-tight" data-glitch="Blockchain">Home</div>
+          </a>
+          <a href="contracts" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_two.jpg" %>) center; background-size: cover;">
+              <div class="h-32"></div>
+              <div class="text-lg font-bold text-white leading-tight" data-glitch="Transactions">Contracts</div>
+          </a>
+      </div>
+
+      <% if user_signed_in? %>
+        <div class="w-1/2 px-1 text-center">
+          <a href="wallets" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_th.jpg" %>) center; background-size: cover;">
+              <div class="h-32"></div>
+              <h3 class="text-lg font-bold text-white leading-tight" data-glitch="Wallet">Wallet</h3>
+          </a>
+          <a href="mining_profile" class="block mb-2 p-5 rounded overflow-hidden text-center transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_four.jpg" %>) center; background-size: cover;">
+              <div class="h-24"></div>
+              <div class="text-lg font-bold text-white leading-tight" data-glitch="Mining Profile">Mining Profile</div>
+          </a>
+      </div>
+      <% else %>
+        <div class="w-1/2 px-1 text-center">
+            <a href="/users/sign_in" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_th.jpg" %>) center; background-size: cover;">
+                <div class="h-32"></div>
+                <h3 class="text-lg font-bold text-white leading-tight" data-glitch="Login">Login</h3>
+            </a>
+            <a href="/users/sign_up" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover_scale-95" style="background: url(<%= asset_path "space_four.jpg" %>) center; background-size: cover;">
+                <div class="h-24"></div>
+                <h3 class="text-lg font-bold text-white leading-tight" data-glitch="Sign Up">Sign Up</h3>
             </a>
         </div>
       <% end %>

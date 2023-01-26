@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+
+
+# Seed functions
 def seed_exec
   create_first_chain
   create_acceptable_word_lists
@@ -134,6 +137,7 @@ def create_first_user
   end
 end
 
+# Execute seed function based on environment
 if Rails.env.development?
   dev_seed_exec
 else
