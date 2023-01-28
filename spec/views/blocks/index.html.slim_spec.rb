@@ -26,6 +26,7 @@ RSpec.describe "blocks/index", type: :view do
   it "renders a list of blocks" do
     render
     cell_selector = Rails::VERSION::STRING >= "7" ? "div>p" : "tr>td"
-    assert_select cell_selector, text: Regexp.new("Previous Hash".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("Block 49")
+    assert_select cell_selector, text: Regexp.new("Block 50")
   end
 end

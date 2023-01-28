@@ -42,3 +42,6 @@ osbc-*.gem
 .env
 /.env
 /.env.*
+/mining_concept.ipynb
+/mining_concept.ipynb_checkpoints
+/hyperminer.py

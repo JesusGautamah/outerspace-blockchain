@@ -62,4 +62,10 @@ describe ApplicationWorker, type: :worker do
       expect(worker.send(:block_exists?)).to be_falsey
     end
   end
+
+  describe "pool check" do
+    it "#pool_exists? should return false if not pool not passed" do
+      expect(worker.send(:pool_exists?)).to be_falsey
+    end
+  end
 end

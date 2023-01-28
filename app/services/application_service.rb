@@ -2,6 +2,8 @@
 
 class ApplicationService
   private
+    attr_reader :user_id, :wallet_id, :wallet_key, :wallet_method
+  
     def dev_error(e)
       if env_acceptable?
         puts "#{e.class}: #{e.message}"
@@ -10,6 +12,7 @@ class ApplicationService
     end
 
     def user_exists?
+      return false unless user_id
       User.find_by(id: user_id).present?
     end
 
