@@ -50,6 +50,7 @@ class Api::V1::ApplicationController < ActionController::API
     end
 
     def ticket
+      return nil unless user.present?
       @ticket = Ticket.find_by(user_id: user.id, status: :active)
     end
 

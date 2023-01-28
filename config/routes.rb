@@ -4,14 +4,12 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq" if Rails.env.development?
-  resources :signatures
   resources :tickets
   resources :pools
   resources :contracts
   resources :transactions
   resources :wallets
   resources :blocks, only: %i[index show]
-  resources :chains
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
 
   devise_scope :user do

@@ -64,6 +64,8 @@ class ApplicationWorker
 
     def pool_exists?
       Pool.find_by(id: pool_id).present?
+    rescue NameError
+      false
     end
 
     def block_exists?

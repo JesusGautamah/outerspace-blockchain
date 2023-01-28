@@ -21,11 +21,21 @@ class TicketsController < ApplicationController
   # POST /tickets or /tickets.json
   def create
     return no_transactions_response if block_transactions.empty?
+    return you_already_have_a_ticket_in_this_pool if user_ticket_on_this_pool?
     create_ticket
     redirect_to tickets_path, notice: "Processing ticket, please wait, wait a minute and refresh the page"
   end
 
   private
+
+    def user_ticket_on_this_pool?
+      current_user.tickets.where(status: 'active').any?
+    end
+
+    def you_already_have_a_ticket_in_this_pool
+      redirect_to root_path, notice: "You already have a ticket in this pool"
+    end
+
     def create_ticket
       CreateTicketWorker.perform_async(current_user.id, current_pool.id, time_ref)
     end
