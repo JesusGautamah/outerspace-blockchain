@@ -33,4 +33,10 @@ RSpec.describe ApplicationService, type: :service do
       expect(service.send(:wallet_exists?, :user_id, 9000)).to be_falsey
     end
   end
+
+  describe "#user_exists?" do
+    it "returns false if user does not exist" do
+      expect(service.send(:user_exists?)).to be_falsey
+    end
+  end
 end

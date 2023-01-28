@@ -67,5 +67,11 @@ describe Api::V1::TicketManagerController, type: :request do
         expect(response).to have_http_status(404)
       end
     end
+
+    context "ticket active check" do
+      it "receives ticket_active? method" do
+        expect(subject.send(:ticket_active?)).to eq(false)
+      end
+    end
   end
 end

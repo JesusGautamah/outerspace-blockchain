@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   Please visit https://github.com/JesusGautamah/outerspace-blockchain for more information."
   spec.homepage = "https://github.com/JesusGautamah/outerspace-blockchain"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.0.3"
+  spec.required_ruby_version = "= 3.2.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 

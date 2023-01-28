@@ -14,8 +14,8 @@ services:
       - "5432:5432"
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: secret
+    env_file:
+      - .env
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && foreman start -f Procfile.dev"

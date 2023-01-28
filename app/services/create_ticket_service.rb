@@ -50,21 +50,14 @@ class CreateTicketService < ApplicationService
     end
 
     def shuffled_string
-      puts "Word: #{word}"
-      puts "Number sequence: #{number_sequence}"
-      puts "Symbol sequence: #{symbol_sequence}"
       string_sum = (word + number_sequence + symbol_sequence).split("").shuffle.join
-      puts "Shuffled string: #{string_sum}"
       string_sum
     end
 
     def generate_user_acceptable_hash
       hash = Digest::SHA256.hexdigest(shuffled_string)
-      puts "Hash: #{hash}"
       block_hash = Digest::SHA256.hexdigest(@transactions.to_json)
-      puts "Block hash: #{block_hash}"
       master_hash = Digest::SHA256.hexdigest(hash + block_hash)
-      puts "Master hash: #{master_hash}"
       [hash, block_hash, master_hash]
     end
 

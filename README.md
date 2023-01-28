@@ -1,12 +1,29 @@
 # <img src="https://osbc-blockchain.herokuapp.com/assets/logo-70825bc795d25668cf4f11b06b990ed0d1c2cae887acce0625e5059226a7946a.png" width="25" height="25"> Outerspace Blockchain
 <!-- Outerspace Logo -->
-
-### This application is instable and under development.
-### Please, use it with caution and at your own risk.
+## What is Outerspace Blockchain?
 ### A Ruby implementation of web blockchain framework.
+Outerspace Blockchain is a blockchain framework that allows you to create your own blockchain in a few minutes with this backend server.
+This application has the intention to be a blockchain framework that can be used to create a blockchain with a web interface and a mobile wallet.
+Utility Tokens and NFT's will be supported native in this blockchain framework.
+This blockchain framework will be used to create a blockchain for the Outerspace Coding projects in the future.
+
+This blockchain works with a different approach than the other blockchains.
+Use it to work with less complexity and more flexibility.
+Perfect for small/medium projects that need a blockchain and can't use Ethereum Network or other blockchains.
+
+Remember always to verify your enviroment variables and do security modifications like changing the default passwords, increasing the security of the database, etc.
+
+### This application is unstable and under development.
+### Please, use it with caution and at your own risk.
+### Demo version: 
+https://osbc.outerspacecoding.com
+
+### Demo staging version: 
+https://blockchain-staging.outerspacecoding.com
+
 #### Developed using TDD (Test Driven Development).
 #### Github Actions CI/CD pipeline.
-#### Firestore is used to store the blockchain.
+#### Firestore will be used to store the blockchain data.
 
 #### Simplecov is used to test code coverage.
 
@@ -15,14 +32,20 @@
 
 #### Rspec is used to test the blockchain.
 
-## Build Version: 0.2.0
+## Build Version: 0.2.1
 
-## Todo
-* [ ] Firebase integration (this will be use instead of Redis management)
+## In Progress
 * [ ] Add and correct tests
-* [ ] Add and correct documentation
+* [ ] Better layout for the blockchain web interface
+* [ ] Add and correct documentation, create api documentation page
+## Todo
+* [ ] Simplify SMTP configuration
+* [ ] Create a template for the user registration email
+* [ ] Create blockchain report mailer to admin
+* [ ] Create blockchain monitor board to admin
+* [ ] Firestore integration (this will be used instead of Redis management)
 * [ ] Add user verification methods
-* [ ] Better mobile layout
+* [ ] Increase environment variables for easily setup custom information for the blockchain
 * [ ] Create the price visualization and the price history api
 * [ ] Add more blockchain features
 * [ ] Add more blockchain tests
@@ -31,23 +54,23 @@
 * [ ] Add nft's modularization class
 * [ ] Add nft's generator class
 * [ ] Benchmark blockchain and mining
-* [ ] Create a blockchain explorer
+* [ ] Create a blockchain dinamic explorer
 * [ ] Create a default blockchain wallet android app generator with flutter
 * [ ] Create generators that will work with rails and flutter at the same time
 * [ ] Create the user marketplace
 * [ ] Integrate Blockchain Api in other projects
 
-Kubernets integration will be worked on in the future.
-
+Kubernetes integration will be worked on in the future.
+Appwrite integration will be worked on in the future.
 ## System dependencies
     1. Docker
     2. Postgresql
     3. Ruby
     4. Redis
 
-* Ruby 3.0.3
+* Ruby 3.2
 * Compose Version 3.3
-* Docker Image: ruby:3.0.3
+* Docker Image: ruby:3.2
 
 * [Installation](#installation)
     - [Docker](#docker) https://docs.docker.com/engine/install/
@@ -56,7 +79,7 @@ Kubernets integration will be worked on in the future.
     - [Postgres](#postgres) https://www.postgresql.org/download/
     - [Rails](#rails) https://guides.rubyonrails.org/getting_started.html
 
-### Install it from RubyGems (Ruby 3.0.3)
+### Install it from RubyGems (Ruby 3.2)
 ```bash
 gem install osbc
 ```
@@ -95,9 +118,9 @@ Use the gem with the following command:
 ```bash
 osbc PATH_TO_GENERATE_BLOCKCHAIN
 ``` 
-## RVM Commands to install Ruby 3.0.3 and Compile the Gem
-* `rvm install 3.0.3`
-* `rvm use 3.0.3`
+## RVM Commands to install Ruby 3.2
+* `rvm install 3.2`
+* `rvm use 3.2`
 * `rvm gemset create outerspace`
 * `rvm gemset use outerspace`
 * `gem install bundler`
@@ -212,6 +235,15 @@ The timestamps of the signatures will be usefull to version the block, checking 
 **The miners will be rewarded with the block reward distributed by the number of signatures**
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/JesusGautamah/outerspace-blockchain
+
+## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) Recent activity 
+[![Time period](https://images.repography.com/33522702/JesusGautamah/outerspace-blockchain/recent-activity/0yzGOYYHXYK_C0-EPT33h2yxMGPjAfT8cxuHq8Ukjrg/Zuq9y_QVJvoZeqCjzE6_J-roxfVO_FF0P0SDhZ9Yo6Y_badge.svg)](https://repography.com)
+
+[![Timeline graph](https://images.repography.com/33522702/JesusGautamah/outerspace-blockchain/recent-activity/0yzGOYYHXYK_C0-EPT33h2yxMGPjAfT8cxuHq8Ukjrg/Zuq9y_QVJvoZeqCjzE6_J-roxfVO_FF0P0SDhZ9Yo6Y_timeline.svg)](https://github.com/JesusGautamah/outerspace-blockchain/commits)
+[![Issue status graph](https://images.repography.com/33522702/JesusGautamah/outerspace-blockchain/recent-activity/0yzGOYYHXYK_C0-EPT33h2yxMGPjAfT8cxuHq8Ukjrg/Zuq9y_QVJvoZeqCjzE6_J-roxfVO_FF0P0SDhZ9Yo6Y_issues.svg)](https://github.com/JesusGautamah/outerspace-blockchain/issues)
+
+[![Pull request status graph](https://images.repography.com/33522702/JesusGautamah/outerspace-blockchain/recent-activity/0yzGOYYHXYK_C0-EPT33h2yxMGPjAfT8cxuHq8Ukjrg/Zuq9y_QVJvoZeqCjzE6_J-roxfVO_FF0P0SDhZ9Yo6Y_prs.svg)](https://github.com/JesusGautamah/outerspace-blockchain/pulls)
+[![Top contributors](https://images.repography.com/33522702/JesusGautamah/outerspace-blockchain/recent-activity/0yzGOYYHXYK_C0-EPT33h2yxMGPjAfT8cxuHq8Ukjrg/Zuq9y_QVJvoZeqCjzE6_J-roxfVO_FF0P0SDhZ9Yo6Y_users.svg)](https://github.com/JesusGautamah/outerspace-blockchain/graphs/contributors)
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
