@@ -57,8 +57,8 @@ gem "sidekiq", "~> 6.5"
 # Slim template
 gem "slim-rails", "~> 3.5"
 
-# Devise
-gem "devise", "~> 4.8"
+# Devise from github
+gem "devise", github: "heartcombo/devise"
 
 # Rails Controller Testing
 gem "rails-controller-testing", "~> 1.0"
@@ -67,7 +67,7 @@ gem "rails-controller-testing", "~> 1.0"
 gem "activerecord-import"
 
 # Google Firestore
-gem "google-cloud-firestore", "~> 2.6"
+# gem "google-cloud-firestore", "~> 2.6"
 
 # Rack Cors
 gem "rack-cors"
