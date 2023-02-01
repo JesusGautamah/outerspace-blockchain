@@ -69,6 +69,9 @@ gem "activerecord-import"
 # Google Firestore
 gem "google-cloud-firestore", "~> 2.6"
 
+# Rack Cors
+gem "rack-cors"
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

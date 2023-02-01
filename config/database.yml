@@ -3,8 +3,8 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: db
-  username: postgres
-  password: secret
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 development:
   <<: *default
@@ -17,5 +17,3 @@ test:
 production:
   <<: *default
   database: outerspace_blockchain_production
-  username: outerspace_blockchain
-  password: <%= ENV["OUTERSPACE_BLOCKCHAIN_DATABASE_PASSWORD"] %>

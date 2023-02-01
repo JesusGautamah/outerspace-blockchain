@@ -39,6 +39,8 @@ https://blockchain-staging.outerspacecoding.com
 * [ ] Better layout for the blockchain web interface
 * [ ] Add and correct documentation, create api documentation page
 ## Todo
+* [ ] Better Rack Cors Config
+* [ ] Add Rack Attack and Rack Attack Throttle
 * [ ] Simplify SMTP configuration
 * [ ] Create a template for the user registration email
 * [ ] Create blockchain report mailer to admin
