@@ -11,7 +11,6 @@ class Users::SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate!(auth_options) do |user|
       if user.valid_password?(params[:user][:password])
-        set_flash_message!(:notice, :signed_in)
         sign_in(resource_name, resource)
       else
         return login_failed
@@ -31,7 +30,8 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def login_pass
-    redirect_to root_path, notice: "Login success"
+    set_flash_message!(:notice, :signed_in)
+    respond_with resource, location: after_sign_in_path_for(resource)
   end
 
   def login_failed
