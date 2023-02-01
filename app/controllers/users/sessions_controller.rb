@@ -8,18 +8,6 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # def create
-  #   if warden.authenticate(auth_options)
-  #     self.resource = warden.authenticate!(auth_options)
-  #     set_flash_message!(:notice, :signed_in)
-  #     sign_in(resource_name, resource)
-  #   else
-  #     login_failed
-  #   end
-  # rescue
-  #   login_failed
-  # end
-
   def create
     self.resource = warden.authenticate!(auth_options) do |user|
       if user.valid_password?(params[:user][:password])
@@ -41,9 +29,6 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  def after_sign_in_path_for(resource)
-    root_path
-  end
 
   def login_pass
     redirect_to root_path, notice: "Login success"
