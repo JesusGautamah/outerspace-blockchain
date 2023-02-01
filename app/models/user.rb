@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :tickets
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 10 }
   before_create :save_acceptable_assets
   before_create :save_api_keys
   has_many :signatures
