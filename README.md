@@ -145,12 +145,14 @@ Example of the rake tasks:
 * `rake compose:restart` - restart the docker compose services
 * `rake compose:clean_all` - clean all docker compose services
 * `rake compose:clean_volumes` - clean docker compose volumes
+
 ... more commands in the [Github: Lucy Dockerunner](https://github.com/JesusGautamah/lucy_dockerunner) gem
 #### Database actions
 * `rake compose_db:migrate` - migrate the database
 * `rake compose_db:reset` - reset the database
 * `rake compose_db:drop` - drop the database
 * `rake compose_db:create` - create the database
+
 ... more commands in the [Github: Lucy Dockerunner](https://github.com/JesusGautamah/lucy_dockerunner) gem
 
 ### Tests actions
@@ -159,6 +161,7 @@ Example of the rake tasks:
 * `rake compose_test:controllers` - run controllers tests
 * `rake compose_test:models` - run models tests
 * `rake compose_test:requests` - run requests tests
+
 ... more commands in the [Github: Lucy Dockerunner](https://github.com/JesusGautamah/lucy_dockerunner) gem
 
 ### LOGS actions
@@ -169,6 +172,7 @@ Example of the rake tasks:
 * `rake compose_logs:all` - show all logs
 * `rake compose_logs:tail_web` - tail web logs
 * `rake compose_logs:tail_db` - tail db logs
+
 ... more commands in the [Github: Lucy Dockerunner](https://github.com/JesusGautamah/lucy_dockerunner) gem
 ## Start the blockchain
 ````bash
