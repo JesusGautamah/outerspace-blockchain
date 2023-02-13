@@ -12,6 +12,23 @@ class Api::V1::TicketManagerController < Api::V1::ApplicationController
     ticket_opened_response
   end
 
+  def transactions_to_mine
+    return unauthorized_response unless find_user_by_header
+    ticket = Ticket.find_by(user_id: @user.id)
+    return ticket_not_found_response unless ticket.present?
+    transactions_ids = ticket.transaction_id_list
+    transactions = Transaction.where(id: transactions_ids)
+    transactions_json = transactions.to_json
+    render json: transactions_json, status: :ok
+  end
+
+  def retrieve_ticket_keys
+    return unauthorized_response unless find_user_by_header
+    ticket = Ticket.find_by(user_id: @user.id)
+    ticket_key_one = ticket.first_five
+    ticket_key_two = ticket.last_five
+    render json: { ticket_key_one: ticket_key_one, ticket_key_two: ticket_key_two }, status: :ok
+  end
 
   private
     def ticket_nil?

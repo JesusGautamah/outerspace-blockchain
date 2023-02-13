@@ -15,11 +15,8 @@ Remember always to verify your enviroment variables and do security modification
 
 ### This application is unstable and under development.
 ### Please, use it with caution and at your own risk.
-### Demo version: 
+### Demo version:  (temporary down)
 https://osbc.outerspacecoding.com
-
-### Demo staging version: 
-https://blockchain-staging.outerspacecoding.com
 
 #### Developed using TDD (Test Driven Development).
 #### Github Actions CI/CD pipeline.
@@ -135,31 +132,26 @@ The application has a .env file in root folder with the following environment va
     CONTRACTS_LIMIT=100
     SIGNATURES_LIMIT=5
 ## Configuration
-### Rake tasks
+### Lucy Dockerunner gem
 
-This application has rake tasks to help you with the development process with docker.
-The tasks are:
+This application has rake tasks to help you with the development process with docker imported from the [Lucy Dockerunner](https://rubygems.org/gems/lucy_dockerunner) gem.
+Example of the rake tasks:
 #### Docker actions
 * `rake compose:install` - build docker compose and migrate the database
 * `rake compose:build` - build docker compose services
 * `rake compose:up` - start the docker compose services
 * `rake compose:down` - stop the docker compose services
 * `rake compose:db_detach` - detach the database from the docker compose services
-* `rake compose:redis_detach` - detach the redis from the docker compose services
-* `rake compose:back_detach` - detach the backend(redis, sidekiq, db) from the docker compose services
 * `rake compose:restart` - restart the docker compose services
 * `rake compose:clean_all` - clean all docker compose services
+* `rake compose:clean_volumes` - clean docker compose volumes
+... more commands in the [Github: Lucy Dockerunner](https://gitub.com/JesusGautamah/lucy_dockerunner) gem
 #### Database actions
 * `rake compose_db:migrate` - migrate the database
 * `rake compose_db:reset` - reset the database
 * `rake compose_db:drop` - drop the database
 * `rake compose_db:create` - create the database
-* `rake compose_db:seed` - seed the database
-* `rake compose_db:rollback` - rollback the database
-* `rake compose_db:setup` - setup the database
-* `rake compose_db:complete_setup` - complete setup the database
-* `rake compose_db:reset_setup` - drop and setup the database
-* `rake compose_db:reset` - reset the database
+... more commands in the [Github: Lucy Dockerunner](https://gitub.com/JesusGautamah/lucy_dockerunner) gem
 
 ### Tests actions
 * `rake compose_test:all` - run all tests
@@ -167,10 +159,7 @@ The tasks are:
 * `rake compose_test:controllers` - run controllers tests
 * `rake compose_test:models` - run models tests
 * `rake compose_test:requests` - run requests tests
-* `rake compose_test:helpers` - run helpers tests
-* `rake compose_test:mailers` - run mailers tests
-* `rake compose_test:routing` - run routing tests
-* `rake compose_test:views` - run views tests
+... more commands in the [Github: Lucy Dockerunner](https://gitub.com/JesusGautamah/lucy_dockerunner) gem
 
 ### LOGS actions
 * `rake compose_logs:web` - show web logs
@@ -180,15 +169,7 @@ The tasks are:
 * `rake compose_logs:all` - show all logs
 * `rake compose_logs:tail_web` - tail web logs
 * `rake compose_logs:tail_db` - tail db logs
-* `rake compose_logs:tail_redis` - tail redis logs
-* `rake compose_logs:tail_sidekiq` - tail sidekiq logs
-* `rake compose_logs:tail_all` - tail all logs
-* `rake compose_logs:follow_web` - follow web logs
-* `rake compose_logs:follow_db` - follow db logs
-* `rake compose_logs:follow_redis` - follow redis logs
-* `rake compose_logs:follow_sidekiq` - follow sidekiq logs
-* `rake compose_logs:follow_all` - follow all logs
-
+... more commands in the [Github: Lucy Dockerunner](https://gitub.com/JesusGautamah/lucy_dockerunner) gem
 ## Start the blockchain
 ````bash
 $ rake compose:up

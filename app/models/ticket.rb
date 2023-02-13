@@ -3,6 +3,8 @@
 class Ticket < ApplicationRecord
   belongs_to :user
   belongs_to :pool
+  validates :first_five, presence: true
+  validates :last_five, presence: true
   validates :time_ref, presence: true
   validates :status, presence: true
   has_many :signatures
