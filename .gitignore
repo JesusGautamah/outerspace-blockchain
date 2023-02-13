@@ -40,8 +40,12 @@
 /coverage/*
 osbc-*.gem
 .env
+.env_production
+/.env_production
+/.env_production.*
 /.env
 /.env.*
 /mining_concept.ipynb
 /mining_concept.ipynb_checkpoints
 /hyperminer.py
+/.ipynb_checkpoints

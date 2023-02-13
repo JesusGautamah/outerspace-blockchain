@@ -113,3 +113,6 @@ group :test do
   gem "selenium-webdriver", "~> 4.5"
   gem "webdrivers", "~> 5.2"
 end
+
+# local gem, is outside this project root folder, and calls lucy_dockerunner
+gem "lucy_dockerunner", "~> 0.1.4"

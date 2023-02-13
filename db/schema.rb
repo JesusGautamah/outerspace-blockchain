@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_080357) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_141405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,10 +97,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_080357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_acceptable_hash"
-    t.string "confirmation_hash"
-    t.string "block_hash"
+    t.string "confirmation_hash", null: false
+    t.string "block_hash", null: false
     t.datetime "time_ref"
     t.text "transaction_id_list", default: [], array: true
+    t.string "first_five", null: false
+    t.string "last_five", null: false
     t.index ["pool_id"], name: "index_tickets_on_pool_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end

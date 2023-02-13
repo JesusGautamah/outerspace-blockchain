@@ -68,7 +68,8 @@ class CreateTicketService < ApplicationService
     def ticket_created?
       hash, block_hash, master_hash = generate_user_acceptable_hash
       @ticket = Ticket.new(user_id: user_id, status: :active, pool_id: pool_id,
-                           time_ref: time_ref, user_acceptable_hash: hash,
+                           time_ref: time_ref, user_acceptable_hash: nil,
+                           first_five: hash[0..4], last_five: hash[-5..-1],
                            confirmation_hash: master_hash, block_hash: block_hash,
                            transaction_id_list: generate_transaction_id_list)
       @ticket.save ? true : false
