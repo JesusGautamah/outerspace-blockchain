@@ -52,7 +52,7 @@ gem "rubocop-rails", "~> 2.16", require: false
 gem "rubocop-rspec", "~> 2.13", require: false
 
 # sidekiq
-gem "sidekiq", "~> 6.5"
+gem "sidekiq", "~> 7.0"
 
 # Slim template
 gem "slim-rails", "~> 3.5"

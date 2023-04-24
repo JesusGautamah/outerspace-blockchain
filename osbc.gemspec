@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "tailwindcss-rails", "~> 2.0"
   spec.add_runtime_dependency "rubocop-rails", "~> 2.16"
   spec.add_runtime_dependency "rubocop-rspec", "~> 2.13"
-  spec.add_runtime_dependency "sidekiq", "~> 6.5"
+  spec.add_runtime_dependency "sidekiq", ">= 6.5", "< 8.0"
   spec.add_runtime_dependency "devise", "~> 4.8"
   spec.add_runtime_dependency "rspec-rails", "~> 6.0"
   spec.add_runtime_dependency "factory_bot_rails", "~> 6.2"
